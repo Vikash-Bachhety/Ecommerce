@@ -1,0 +1,32 @@
+@keyframes backgroundChange {
+  0% { background-image: url('../assets/bgImages/agra.jpg'); }
+  20% { background-image: url('../assets/bgImages/1.jpg'); }
+  40% { background-image: url('../assets/bgImages/2.jpg'); }
+  60% { background-image: url('../assets/bgImages/3.jpg'); }
+  80% { background-image: url('../assets/bgImages/delhi.jpg'); }
+  100% { background-image: url('../assets/bgImages/agra.jpg'); }
+}
+
+.animated-background {
+  position: relative;
+  animation: backgroundChange 8s infinite;
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+}
+
+.animated-background::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.212); 
+  z-index: 1;
+}
+
+.animated-background > * {
+  position: relative;
+  z-index: 2;
+}

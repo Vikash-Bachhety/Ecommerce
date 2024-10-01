@@ -1,0 +1,57 @@
+const User = require('../models/user');
+const BusinessCard = require('../models/businessCard');
+
+exports.createBusinessCard = async (req, res) => {
+    try {
+        const {
+            category,
+            subcategory,
+            products
+        } = req.body;
+
+        const userId = req.user.id;
+        const user = await User.findById(userId);
+        if (!user || user.accountType !== 'business') {
+            return res.status(400).json({ error: 'Invalid user ID or user is not a business account' });
+        }
+
+        const newBusinessCard = new BusinessCard({
+            user: userId,
+            category,
+            subcategory,
+            products
+
+        });
+
+        await newBusinessCard.save();
+
+        // Push the new BusinessCard ID into the user's businessCard array
+        user.businessCard.push(newBusinessCard._id);
+        await user.save();
+
+        // Respond with the newly created BusinessCard
+        res.status(201).send(newBusinessCard);
+    } catch (error) {
+        res.status(400).send({ error: error.message });
+    }
+};
+
+exports.getBusinessCardsByUser = async (req, res) => {
+    try {
+        const { userId } = req.params;
+
+        const user = await User.findById(userId).populate('businessCard');
+        if (!user || user.accountType !== 'business') {
+            return res.status(400).json({ error: 'Invalid user ID or user is not a business account' });
+        }
+
+        if (!user.businessCard || user.businessCard.length === 0) {
+            return res.status(404).json({ error: 'No business cards found for this user' });
+        }
+
+        res.status(200).json(user.businessCard);
+    } catch (error) {
+        res.status(400).json({ error: error.message });
+    }
+};
+
