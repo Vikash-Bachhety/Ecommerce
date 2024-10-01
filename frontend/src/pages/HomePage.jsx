@@ -13,10 +13,10 @@ const HomePage = () => {
           <h1 className="text-4xl md:text-6xl font-bold mb-4">
             Discover the Best Deals in Your City
           </h1>
-          <p className="text-lg md:text-2xl mb-8">
+          {/* <p className="text-lg md:text-2xl mb-8">
             Find amazing discounts, explore events, and uncover hidden gems
             around you.
-          </p>
+          </p> */}
         </div>
       </section>
       {/* Top Deals Section */}

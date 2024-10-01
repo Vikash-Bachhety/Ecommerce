@@ -10,7 +10,12 @@ const businessCardSchema = new mongoose.Schema({
         type: String, 
         required: true 
     },
-    products: [{ type: mongoose.Schema.Types.ObjectId, ref: 'product' }],
+    products: [productSchema],
+    user: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User",
+        required: true,
+    }
 }, { timestamps: true });
 
 module.exports = mongoose.model('BusinessCard', businessCardSchema);

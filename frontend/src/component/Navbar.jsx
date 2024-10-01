@@ -8,7 +8,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { categories } from "./category";
 import { logout, setAuthFromToken } from "./authSlice";
 import SearchComponent from "./SearchComponent";
-import city from "../assets/bgImages/city.png"
+// import city from "../assets/bgImages/city.png"
 import UserMenu from "./userMenu";
 
 function Navbar() {
@@ -43,15 +43,15 @@ function Navbar() {
   return (
     <div>
       <nav className={`bg-teal-500 w-full text-white px-4 ${sidebarOpen ? 'hidden' : ''}`}>
-        <div className="flex justify-between items-center relative">
+        <div className="flex h-16 justify-between items-center relative">
           {/* Logo */}
           <div className="logo flex flex-col items-center">
-            <img src={city} className="w-16" alt="" />
+            {/* <img src={city} className="w-16" alt="" /> */}
             <p className="hidden lg:block font-extrabold text-md">Know Your City</p>
           </div>
 
           {/* Search component */}
-          <div className="w-1/2 hidden sm:block">
+          <div className="w-1/3 hidden sm:block">
             <SearchComponent />
           </div>
 

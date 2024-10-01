@@ -120,21 +120,24 @@ exports.updateFavorites = async (req, res) => {
 exports.updateCart = async (req, res) => {
   const { userId } = req.params;
   const { cart } = req.body; 
-  console.log(req.body)
-  console.log(req.params)
+  console.log(req.body);
+  console.log(req.params);
 
   try {
-      const user = await User.findByIdAndUpdate(
-          userId,
-          { cart }, 
-          { new: true } 
-      );
-      if (!user) {
-          return res.status(404).send({ message: "User not found" });
-      }
-      res.send(user.cart);
+    const user = await User.findByIdAndUpdate(
+      userId,
+      { cart }, 
+      { new: true }
+    );
+    if (!user) {
+      return res.status(404).send({ message: "User not found" });
+    }
+    res.send(user.cart);
   } catch (error) {
-      console.error(error);
-      res.status(500).send({ message: "Server error" });
+    console.error(error);
+    res.status(500).send({ message: "Server error" });
   }
 };
+
+// Fetch user's products by businessCard
+

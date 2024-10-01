@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { addToCart } from './cartSlice.js';
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
+import { jwtDecode } from 'jwt-decode';
 const ProductDetails = () => {
   const { isLoggedIn, accountType } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
@@ -13,6 +13,18 @@ const ProductDetails = () => {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [cart, setCart] = useState([]);
+  const [userId, setUserId] = useState(null);
+
+  const token = localStorage.getItem("token");
+
+  useEffect(() => {
+    if (token) {
+      const decodedUser = jwtDecode(token);
+      const userId = decodedUser.user.id;
+      setUserId(userId);
+    }
+  }, [token]);
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -29,26 +41,40 @@ const ProductDetails = () => {
     fetchProduct();
   }, [id]);
 
-  const handleAddToCart = () => {
+  const handleAddToCart = async (product) => {
+    const updatedCarts = cart.includes(product._id)
+      ? cart.filter(id => id !== product._id)
+      : [...cart, product._id]; // Add new item to cart
+
+    setCart(updatedCarts);
+
+    try {
+      const response = await axios.put(`http://localhost:5000/api/products/updateCart/${userId}`, {
+        cart: updatedCarts,
+      });
+      console.log(response.data);
+
+      toast.success(cart.includes(product.id) ? "Removed from cart" : "Added to cart");
+    } catch (error) {
+      console.error('Error updating cart', error);
+      toast.error("Could not update cart");
+    }
+
     if (!isLoggedIn) {
       navigate('/signin');
       return;
-    }
-    else if (isLoggedIn && accountType === 'business') {
-      toast.warn("This is business account !")
+    } else if (isLoggedIn && accountType === 'business') {
+      toast.warn("This is a business account!");
+      return;
     }
 
-    if (product) {
-      dispatch(addToCart({
-        id,
-        name: product.productName,
-        description: product.description,
-        price: product.offerPrice,
-        image: product.imageUrl
-      }));
-    } else {
-      console.error('Product not found');
-    }
+    dispatch(addToCart({
+      id: product.id,
+      name: product.productName,
+      description: product.description,
+      price: product.offerPrice,
+      image: product.imageUrl
+    }));
   };
 
   if (loading) {
@@ -77,7 +103,7 @@ const ProductDetails = () => {
             <p className="text-lg line-through mb-4">₹{product.actualPrice}</p>
             <p className="text-md mb-4">{product.description}</p>
             <button
-              onClick={handleAddToCart}
+              onClick={() => { handleAddToCart(product) }}
               className="bg-primary w-40 text-white py-2 rounded-lg">
               Add to Cart
             </button>

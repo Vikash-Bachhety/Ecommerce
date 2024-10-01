@@ -9,6 +9,8 @@ exports.createBusinessCard = async (req, res) => {
             products
         } = req.body;
 
+        console.log(req.body)
+
         const userId = req.user.id;
         const user = await User.findById(userId);
         if (!user || user.accountType !== 'business') {
@@ -20,7 +22,6 @@ exports.createBusinessCard = async (req, res) => {
             category,
             subcategory,
             products
-
         });
 
         await newBusinessCard.save();

@@ -29,13 +29,13 @@ const UserMenu = () => {
 
       {showMenu && (
         <div
-          className="absolute right-0 -mt-0.5 w-48 bg-white border rounded shadow-lg z-20"
+          className="absolute right-0 -mt-2 w-40 bg-white border rounded shadow-lg z-20"
           onMouseEnter={() => setShowMenu(true)}
           onMouseLeave={() => setShowMenu(false)}
         >
           <ul>
             <li
-              className="block px-4 py-2 text-sm text-teal-500 hover:text-white rounded hover:bg-rose-400 cursor-pointer"
+              className="block px-4 py-2 text-sm font-semibold text-teal-500 hover:text-white rounded hover:bg-rose-400 cursor-pointer"
               onClick={() => navigate("/profile") & setShowMenu(false)}
             >
               Profile

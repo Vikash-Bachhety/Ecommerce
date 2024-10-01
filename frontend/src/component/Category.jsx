@@ -12,7 +12,7 @@ const Category = () => {
           {categories.map((category) => (
             <div
               key={category.id}
-              className="min-w-80 w-96 bg-white p-4 rounded-lg shadow-md flex flex-col items-center transform hover:scale-105 hover:shadow-2xl transition-transform duration-300 ease-in-out"
+              className="bg-white min-w-40 w-72 h-92 p-3 flex-wrap rounded-lg shadow-md flex flex-col min-w-md flex"
             >
               <img
                 src={category.image}
@@ -27,7 +27,7 @@ const Category = () => {
               </p>
               <Link
                 to={`/category/${category.id}`}
-                className="bg-primary text-white py-2 px-4 rounded-full hover:bg-highlight transition"
+                className="bg-primary mx-auto text-white py-1 px-2 rounded-lg hover:bg-highlight transition"
               >
                 Explore
               </Link>

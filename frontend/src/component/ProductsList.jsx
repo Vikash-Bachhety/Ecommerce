@@ -12,6 +12,7 @@ const ProductList = ({ id }) => { // Assuming userId is passed as prop
   const [products, setProducts] = useState([]);
   const [favorites, setFavorites] = useState([]);
   const [userId, setUserId] = useState(null);
+  
   const token = localStorage.getItem("token");
 
 
@@ -32,9 +33,10 @@ const ProductList = ({ id }) => { // Assuming userId is passed as prop
 
       try {
           // Make API call to update favorites in the database
-          await axios.put(`http://localhost:5000/api/products/updateFavorites/${userId}`, {
+          const response = await axios.put(`http://localhost:5000/api/products/updateFavorites/${userId}`, {
               favorites: updatedFavorites,
           });
+          console.log(response.data);
           // Notify user about the change
           toast.success(favorites.includes(dealId) ? "Removed from favorites" : "Added to favorites");
       } catch (error) {
