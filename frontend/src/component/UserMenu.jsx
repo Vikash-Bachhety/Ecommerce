@@ -2,14 +2,14 @@ import React, { useState } from "react";
 import { FaRegUser } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { logout } from "./authSlice";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
-
 
 const UserMenu = () => {
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
   const navigate = useNavigate();
+  const { accountType } = useSelector((state) => state.auth);
 
   const handleLogout = () => {
     dispatch(logout());
@@ -40,12 +40,21 @@ const UserMenu = () => {
             >
               Profile
             </li>
+            {accountType && accountType === "business" ? (
             <li
               className="block px-4 py-2 text-sm font-semibold text-teal-500 hover:text-white rounded hover:bg-rose-400 cursor-pointer"
               onClick={() => navigate("/myproducts") & setShowMenu(false)}
             >
               My Products
             </li>
+            ) : (
+              <li
+              className="block px-4 py-2 text-sm font-semibold text-teal-500 hover:text-white rounded hover:bg-rose-400 cursor-pointer"
+              onClick={() => navigate("/myfavorites") & setShowMenu(false)}
+            >
+              My Favorites
+            </li>
+            )}
             <li
               className="block px-4 py-2 text-sm text-teal-500 hover:text-white rounded hover:bg-rose-400 cursor-pointer"
               onClick={handleLogout}

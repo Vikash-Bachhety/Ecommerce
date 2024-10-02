@@ -21,6 +21,7 @@ import ProductDetails from "./component/ProductDetails.jsx";
 import Payment from "./pages/Payment.jsx";
 import UserMenu from "./component/userMenu.jsx";
 import MyProducts from "./component/MyProducts.jsx";
+import MyFavorites from "./component/MyFavorites.jsx";
 
 const router = createBrowserRouter([
   {
@@ -70,6 +71,10 @@ const router = createBrowserRouter([
       {
         path: "/payment",
         element: <Payment />,
+      },
+      {
+        path:"/myfavorites",
+        element: <MyFavorites />
       },
       {
         path:"/myproducts",

@@ -4,46 +4,14 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import { IoIosHeartEmpty, IoIosHeart } from "react-icons/io";
 import { FaArrowRight } from 'react-icons/fa';
-import {jwtDecode} from 'jwt-decode';
-import { toast } from "react-toastify";
+import useUserData from "./useUserData";
+import useAddFav from "./useAddFav.js";
 
-const ProductList = ({ id }) => { // Assuming userId is passed as prop
+const ProductList = () => {
   const { category, subcategory } = useParams();
   const [products, setProducts] = useState([]);
-  const [favorites, setFavorites] = useState([]);
-  const [userId, setUserId] = useState(null);
-  
-  const token = localStorage.getItem("token");
-
-
-  useEffect(()=>{
-    if (token) {
-      const decodedUser = jwtDecode(token);  
-      const userId = decodedUser.user.id; 
-      setUserId(userId); 
-  }
-},[])
-
-  const handleFav = async (dealId) => {
-      const updatedFavorites = favorites.includes(dealId)
-          ? favorites.filter(id => id !== dealId) // Remove from favorites
-          : [...favorites, dealId]; // Add to favorites
-
-      setFavorites(updatedFavorites); // Update local state
-
-      try {
-          // Make API call to update favorites in the database
-          const response = await axios.put(`http://localhost:5000/api/products/updateFavorites/${userId}`, {
-              favorites: updatedFavorites,
-          });
-          console.log(response.data);
-          // Notify user about the change
-          toast.success(favorites.includes(dealId) ? "Removed from favorites" : "Added to favorites");
-      } catch (error) {
-          console.error('Error updating favorites', error);
-          toast.error("Could not update favorites");
-      }
-  };
+  const {favorites,setFavorites, userId} = useUserData();
+  const { handleFav } = useAddFav(favorites, setFavorites, userId);
 
   useEffect(() => {
     if (category && subcategory) {
@@ -60,7 +28,7 @@ const ProductList = ({ id }) => { // Assuming userId is passed as prop
           {products.map((deal) => (
             <div
               key={deal._id}
-              className="bg-white w-60 p-3 flex flex-col rounded-lg shadow-sm border border-slate-100 hover:shadow-xl mb-6 w-full sm:w-[48%] lg:w-[32%]"
+              className="bg-white w-60 p-3 flex flex-col rounded-lg shadow-sm border border-slate-100 hover:shadow-xl mb-6 sm:w-[48%] lg:w-[32%]"
             >
               <img
                 src={deal.imageUrl}
@@ -68,7 +36,7 @@ const ProductList = ({ id }) => { // Assuming userId is passed as prop
                 className="h-48 w-full object-cover mb-4 rounded-lg shadow-sm"
               />
               <div className="flex gap-5 items-center justify-between">
-                <h3 className="text-xl font-semibold text-primary text-gray-800">
+                <h3 className="text-xl font-semibold text-primary">
                   {deal.productName}
                 </h3>
                 {/* Heart Icon with Conditional Rendering */}

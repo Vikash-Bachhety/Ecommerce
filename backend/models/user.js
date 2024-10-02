@@ -1,5 +1,7 @@
 const mongoose = require('mongoose');
 const Product = require('./product.js')
+const productSchema = require('./product.js');
+
 
 const itemSchema = new mongoose.Schema({
     productId: {
@@ -83,8 +85,9 @@ const userSchema = new mongoose.Schema({
         required: true,
     },
     businessCard: [{ type: mongoose.Schema.Types.ObjectId, ref: 'BusinessCard' }],
-    favorites: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Product' }],
-    cart: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Product' }],
+    favorites: [{ type: mongoose.Schema.Types.ObjectId, ref: 'BusinessCard' }],
+    // favorites: [productSchema],
+    cart: [{ type: mongoose.Schema.Types.ObjectId, ref: 'BusinessCard' }],
     orders: [orderSchema],
     paymentHistory: [paymentSchema],
 }, { timestamps: true });

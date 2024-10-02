@@ -8,6 +8,7 @@ router.get('/:id', productController.getProduct);
 router.get('/:category/:subcategory', productController.getProductList);
 router.put('/updateFavorites/:userId', productController.updateFavorites);
 router.put('/updateCart/:userId', productController.updateCart);
-
+// router.get('/:userId/myproducts', productController.myproducts);
+// router.get('/:userId/myfavorites', productController.myfavorites);
 
 module.exports = router;
