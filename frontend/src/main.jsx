@@ -20,6 +20,7 @@ import Cart from './pages/Cart.jsx'
 import ProductDetails from "./component/ProductDetails.jsx";
 import Payment from "./pages/Payment.jsx";
 import UserMenu from "./component/userMenu.jsx";
+import MyProducts from "./component/MyProducts.jsx";
 
 const router = createBrowserRouter([
   {
@@ -70,6 +71,10 @@ const router = createBrowserRouter([
         path: "/payment",
         element: <Payment />,
       },
+      {
+        path:"/myproducts",
+        element: <MyProducts />
+      }
     ],
   },
   {

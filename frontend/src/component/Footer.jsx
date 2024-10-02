@@ -9,7 +9,7 @@ import { FcContacts } from "react-icons/fc";
 
 const Footer = () => {
   return (
-    <footer className="bg-teal-500 text-white py-8">
+    <footer className="bg-teal-500 text-white p-8">
       <div className="container mx-auto flex flex-col flex-wrap text-white justify-between">
         {/* Categories Section */}
         <div className="w-full flex flex-col items-center mb-8">
@@ -26,11 +26,9 @@ const Footer = () => {
                       className="text-white hover:text-highlight transition text-xs"
                       key={subcategory.id}
                     >
-                      <Link to={`/${category.name}/${subcategory.name}`}
-                      >
+                      <Link to={`/${category.name}/${subcategory.name}`}>
                         {subcategory.name}
                       </Link>
-
                     </li>
                   ))}
                 </ul>
@@ -98,9 +96,7 @@ const Footer = () => {
           </ul>
         </div>
         <div className="container mx-auto text-center">
-          <p className="text-xs">
-            &copy; 2024 Know Your City. All Rights Reserved.
-          </p>
+          <p className="text-xs">&copy; 2024 Omnimart. All Rights Reserved.</p>
           <div className="mt-2">
             <a to="#privacy" className="text-xs hover:text-primary mx-2">
               Privacy Policy

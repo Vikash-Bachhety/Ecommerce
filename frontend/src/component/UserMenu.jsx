@@ -41,6 +41,12 @@ const UserMenu = () => {
               Profile
             </li>
             <li
+              className="block px-4 py-2 text-sm font-semibold text-teal-500 hover:text-white rounded hover:bg-rose-400 cursor-pointer"
+              onClick={() => navigate("/myproducts") & setShowMenu(false)}
+            >
+              My Products
+            </li>
+            <li
               className="block px-4 py-2 text-sm text-teal-500 hover:text-white rounded hover:bg-rose-400 cursor-pointer"
               onClick={handleLogout}
             >

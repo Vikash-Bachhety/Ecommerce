@@ -113,6 +113,6 @@ exports.myproducts = async (req, res) => {
         res.status(200).send(products);
     } catch (error) {
         console.error('Error fetching products:', error);
-        res.status(500).json({ message: 'Server error' });
+        res.status(500).send({ message: 'Server error' });
     }
 };

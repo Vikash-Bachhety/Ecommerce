@@ -3,8 +3,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { LuLayoutDashboard } from "react-icons/lu";
 import { FaCartPlus, FaBars, FaTimes } from "react-icons/fa";
-import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { categories } from "./category";
 import { logout, setAuthFromToken } from "./authSlice";
 import SearchComponent from "./SearchComponent";
@@ -42,12 +42,16 @@ function Navbar() {
 
   return (
     <div>
-      <nav className={`bg-teal-500 w-full text-white px-4 ${sidebarOpen ? 'hidden' : ''}`}>
+      <nav
+        className={`bg-teal-500 w-full text-white px-4 ${
+          sidebarOpen ? "hidden" : ""
+        }`}
+      >
         <div className="flex h-16 justify-between items-center relative">
           {/* Logo */}
           <div className="logo flex flex-col items-center">
             {/* <img src={city} className="w-16" alt="" /> */}
-            <p className="hidden lg:block font-extrabold text-md">Know Your City</p>
+            <p className="hidden lg:block font-extrabold text-md">Omnimart</p>
           </div>
 
           {/* Search component */}
@@ -61,8 +65,15 @@ function Navbar() {
           </div>
 
           {/* Navbar links and icons */}
-          <div className={`md:flex items-center space-x-4 ${sidebarOpen ? 'hidden' : ''}`}>
-            <Link to="/" className="hidden xl:block rounded-md px-4 py-2 hover:text-white hover:bg-opacity-20 hover:bg-slate-900">
+          <div
+            className={`md:flex items-center space-x-4 ${
+              sidebarOpen ? "hidden" : ""
+            }`}
+          >
+            <Link
+              to="/"
+              className="hidden xl:block rounded-md px-4 py-2 hover:text-white hover:bg-opacity-20 hover:bg-slate-900"
+            >
               Home
             </Link>
 
@@ -113,7 +124,6 @@ function Navbar() {
               ) : null
             ) : null}
 
-
             {isLoggedIn ? (
               <UserMenu />
             ) : (
@@ -129,21 +139,29 @@ function Navbar() {
       </nav>
 
       {/* Sidebar for mobile view */}
-      <div className={`z-20 md:hidden fixed top-0 left-0 min-w-3/4 h-full bg-teal-500 text-white transition-transform transform ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'}`}>
+      <div
+        className={`z-20 md:hidden fixed top-0 left-0 min-w-3/4 h-full bg-teal-500 text-white transition-transform transform ${
+          sidebarOpen ? "translate-x-0" : "-translate-x-full"
+        }`}
+      >
         <div className="flex justify-between items-center p-4">
-          <p className="font-extrabold text-xl">Know Your City</p>
-          <FaTimes size={24}
+          <p className="font-extrabold text-xl">Omnimart</p>
+          <FaTimes
+            size={24}
             className="hover:text-rose-400 cursor-pointer"
-            onClick={handleSidebarToggle} />
+            onClick={handleSidebarToggle}
+          />
         </div>
         <div className="flex flex-col p-4 gap-5">
-          <Link to="/" className="py-2 hover:bg-slate-500 w-full rounded-md px-4" onClick={() => setSidebarOpen(false)}>
+          <Link
+            to="/"
+            className="py-2 hover:bg-slate-500 w-full rounded-md px-4"
+            onClick={() => setSidebarOpen(false)}
+          >
             Home
           </Link>
           <div className="relative py-2 hover:bg-slate-500 w-full rounded-md px-4">
-            <button
-              onClick={() => setDropdownOpen(!dropdownOpen)}
-            >
+            <button onClick={() => setDropdownOpen(!dropdownOpen)}>
               Categories
             </button>
             {dropdownOpen && (

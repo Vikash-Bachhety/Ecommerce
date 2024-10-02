@@ -146,7 +146,7 @@ const TopDeals = () => {
           {deals.map((deal) => (
             <div
               key={deal._id}
-              className="bg-white min-w-40 w-72 h-92 p-3 flex-wrap rounded-lg shadow-md flex flex-col min-w-md flex"
+              className="bg-white min-w-40 w-72 h-92 p-3 flex-wrap rounded-lg shadow-md flex-col min-w-md flex"
             >
               <img
                 src={deal.imageUrl}
