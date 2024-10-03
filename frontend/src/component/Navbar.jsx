@@ -8,8 +8,8 @@ import "react-toastify/dist/ReactToastify.css";
 import { categories } from "./category";
 import { logout, setAuthFromToken } from "./authSlice";
 import SearchComponent from "./SearchComponent";
+import UserMenu from "./UserMenu";
 // import city from "../assets/bgImages/city.png"
-import UserMenu from "./userMenu";
 
 function Navbar() {
   const dispatch = useDispatch();
