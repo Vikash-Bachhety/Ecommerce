@@ -43,9 +43,8 @@ function Navbar() {
   return (
     <div className="sticky top-0 w-full z-40">
       <nav
-        className={`bg-teal-500 w-full text-white px-4 ${
-          sidebarOpen ? "hidden" : ""
-        }`}
+        className={`bg-teal-500 w-full text-white px-4 ${sidebarOpen ? "hidden" : ""
+          }`}
       >
         <div className="flex h-16 justify-between items-center relative">
           {/* Logo */}
@@ -66,9 +65,8 @@ function Navbar() {
 
           {/* Navbar links and icons */}
           <div
-            className={`md:flex items-center space-x-4 ${
-              sidebarOpen ? "hidden" : ""
-            }`}
+            className={`md:flex items-center space-x-4 ${sidebarOpen ? "hidden" : ""
+              }`}
           >
             <Link
               to="/"
@@ -140,9 +138,8 @@ function Navbar() {
 
       {/* Sidebar for mobile view */}
       <div
-        className={`z-20 md:hidden fixed top-0 left-0 min-w-3/4 h-full bg-teal-500 text-white transition-transform transform ${
-          sidebarOpen ? "translate-x-0" : "-translate-x-full"
-        }`}
+        className={`z-20 md:hidden fixed top-0 left-0 min-w-3/4 h-full bg-teal-500 text-white transition-transform transform ${sidebarOpen ? "translate-x-0" : "-translate-x-full"
+          }`}
       >
         <div className="flex justify-between items-center p-4">
           <p className="font-extrabold text-xl">Omnimart</p>
