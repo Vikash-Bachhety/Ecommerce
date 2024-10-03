@@ -15,7 +15,7 @@ const useFetchCart = (reload) => {
       try {
         const decoded = jwtDecode(token);
         const userId = decoded.user.id;
-        const response = await axios.get(`http://localhost:5000/api/auth/${userId}/mycart`);
+        const response = await axios.get(`https://omnimart.up.railway.app/api/auth/${userId}/mycart`);
         if(!response.ok){
           console.log(response.data.message)
         }

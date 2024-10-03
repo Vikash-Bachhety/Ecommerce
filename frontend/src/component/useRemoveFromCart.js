@@ -8,7 +8,7 @@ function useRemoveFromCart(id) {
 
     const handleRemoveFromCart = async () => {
         try {
-            const response = await axios.delete(`http://localhost:5000/api/auth/removeFromCart/${userId}/${id}`);
+            const response = await axios.delete(`https://omnimart.up.railway.app/api/auth/removeFromCart/${userId}/${id}`);
             // console.log("Item removed:", response.data);
             dispatch(setCart(response.data)); // Dispatch the setCart action with fetched data
             // Refetch cart data after removing item, if needed

@@ -13,7 +13,7 @@ function SignIn() {
 
   const handleSignin = async (data) => {
     try {
-      const response = await axios.post(`http://localhost:5000/api/auth/signin`, {
+      const response = await axios.post(`https://omnimart.up.railway.app/api/auth/signin`, {
         email: data.email,
         password: data.password,
       });

@@ -36,7 +36,7 @@
 
 //     try {
 //       // Make API call to update favorites in the database
-//       await axios.put(`http://localhost:5000/api/products/updateCart/${userId}`, {
+//       await axios.put(`https://omnimart.up.railway.app/api/products/updateCart/${userId}`, {
 //         cart: updatedCarts,
 //       });
 //       // Notify user about the change

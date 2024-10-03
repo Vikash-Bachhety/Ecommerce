@@ -23,7 +23,7 @@ function Cart() {
 
   const handleRemoveFromCart = async (id) => {
     try {
-      const response = await axios.delete(`http://localhost:5000/api/auth/removeFromCart/${userId}/${id}`);
+      const response = await axios.delete(`https://omnimart.up.railway.app/api/auth/removeFromCart/${userId}/${id}`);
       console.log("Item removed:", response.data);
 
       // Check if the cart is empty after removal and trigger a reload

@@ -25,7 +25,7 @@ function useUserData() {
         try {
           setLoading(true);
           const response = await axios.get(
-            `http://localhost:5000/api/auth/getuser/${userId}`
+            `https://omnimart.up.railway.app/api/auth/getuser/${userId}`
           );
           setCart(response.data.cart || []);
           setFavorites(response.data.favorites || []);

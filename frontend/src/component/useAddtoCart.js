@@ -20,7 +20,7 @@ function useAddToCart(cart, setCart, userId, accountType) {
     // Perform the API call to update the cart on the server
     try {
       const response = await axios.put(
-        `http://localhost:5000/api/products/updateCart/${userId}`,
+        `https://omnimart.up.railway.app/api/products/updateCart/${userId}`,
         {
           cart: updatedCarts,
         }

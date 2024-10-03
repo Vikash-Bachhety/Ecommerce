@@ -18,7 +18,7 @@ function SignUp() {
 
   const handleSignUp = async (data) => {
     try {
-      const response = await axios.post("http://localhost:5000/api/auth/signup", {
+      const response = await axios.post("https://omnimart.up.railway.app/api/auth/signup", {
         accountType: data.accountType,
         firstName: data.firstName,
         lastName: data.lastName,

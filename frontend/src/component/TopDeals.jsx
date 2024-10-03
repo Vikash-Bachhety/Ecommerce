@@ -22,7 +22,7 @@ const TopDeals = () => {
     const fetchDeals = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:5000/api/products/topdeals"
+          "https://omnimart.up.railway.app/api/products/topdeals"
         );
         const allProducts = response.data.flatMap((item) => item.products);
         const productsWithDiscount = allProducts.map((product) => {

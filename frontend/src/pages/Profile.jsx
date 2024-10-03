@@ -15,7 +15,7 @@ const Profile = () => {
 
             const fetchUserData = async () => {
                 try {
-                    const response = await axios.get(`http://localhost:5000/api/auth/getuser/${userId}`);
+                    const response = await axios.get(`https://omnimart.up.railway.app/api/auth/getuser/${userId}`);
                     setUserData(response.data);
                     // console.log(response.data);
                 } catch (err) {

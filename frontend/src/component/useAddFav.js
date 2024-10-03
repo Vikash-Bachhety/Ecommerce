@@ -16,7 +16,7 @@ function useAddFav(favorites, setFavorites, userId) {
     // Perform the API call to update the favorites on the server
     try {
       await axios.put(
-        `http://localhost:5000/api/products/updateFavorites/${userId}`,
+        `https://omnimart.up.railway.app/api/products/updateFavorites/${userId}`,
         { favorites: updatedFavorites }
       );
 

@@ -15,7 +15,7 @@ const ProductList = () => {
 
   useEffect(() => {
     if (category && subcategory) {
-      axios.get(`http://localhost:5000/api/products/${category}/${subcategory}`)
+      axios.get(`https://omnimart.up.railway.app/api/products/${category}/${subcategory}`)
         .then(response => setProducts(response.data))
         .catch(error => console.error('Error fetching products', error));
     }

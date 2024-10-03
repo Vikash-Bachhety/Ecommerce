@@ -24,7 +24,7 @@ const MyProducts = () => {
         const decoded = jwtDecode(token);
         const userId = decoded.user.id;
         const response = await axios.get(
-          `http://localhost:5000/api/auth/${userId}/myfavorites`
+          `https://omnimart.up.railway.app/api/auth/${userId}/myfavorites`
         );
         setCategories(response.data);
         setLoading(false);
