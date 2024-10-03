@@ -19,9 +19,9 @@ import ProductsList from "./component/ProductsList.jsx";
 import Cart from './pages/Cart.jsx'
 import ProductDetails from "./component/ProductDetails.jsx";
 import Payment from "./pages/Payment.jsx";
-import UserMenu from "./component/userMenu.jsx";
 import MyProducts from "./component/MyProducts.jsx";
 import MyFavorites from "./component/MyFavorites.jsx";
+import UserMenu from "./component/UserMenu.jsx";
 
 const router = createBrowserRouter([
   {
