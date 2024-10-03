@@ -3,7 +3,7 @@ import { categories } from "./category.js";
 
 const Category = () => {
   return (
-    <div className="bg-slate-200 min-h-screen p-8">
+    <div className="bgAnimate bg-slate-200 min-h-screen p-8">
       <div className="container mx-auto">
         <h2 className="text-3xl font-bold text-teal-500 mb-8 text-center">
           Categories

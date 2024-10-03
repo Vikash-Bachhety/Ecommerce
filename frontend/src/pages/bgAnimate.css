@@ -30,3 +30,21 @@
   position: relative;
   z-index: 2;
 }
+
+.bgAnimate {
+  animation: backgroundColorAnimation 10s ease infinite; /* Adjust duration and timing */
+  background: linear-gradient(270deg, #2c3e50, #4b79a1, #192f6a, #0c2461, #4a4e69, #282c34); /* Starting gradient */
+  background-size: 400% 400%; /* This allows for a smooth animation effect */
+}
+
+@keyframes backgroundColorAnimation {
+  0% {
+    background-position: 0% 50%; /* Starting position */
+  }
+  50% {
+    background-position: 100% 50%; /* Middle position */
+  }
+  100% {
+    background-position: 0% 50%; /* Ending position */
+  }
+}

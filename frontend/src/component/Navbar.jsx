@@ -41,7 +41,7 @@ function Navbar() {
   };
 
   return (
-    <div>
+    <div className="sticky top-0 w-full z-40">
       <nav
         className={`bg-teal-500 w-full text-white px-4 ${
           sidebarOpen ? "hidden" : ""

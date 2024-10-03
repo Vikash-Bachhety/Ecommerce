@@ -3,7 +3,7 @@ const jwt = require("jsonwebtoken");
 const User = require("../models/user");
 const BusinessCard = require("../models/businessCard.js");
 
-const secretKey = "sdfjkler8jfeiwysadf89r9ajlkjf9";
+const secretKey = process.env.SECRET_KEY;
 
 const createToken = (user) => {
   return jwt.sign({ user }, secretKey, { expiresIn: "5h" });
@@ -162,7 +162,7 @@ exports.mycart = async (req, res) => {
     // Check if the user has any cart products
     if (!user.cart || user.cart.length === 0) {
       return res
-        .status(404)
+        // .status(404)
         .json({ message: "No cart products for this user" });
     }
 
@@ -192,4 +192,31 @@ exports.mycart = async (req, res) => {
   }
 };
 
-
+exports.removeFromCart = async (req, res) => {
+  console.log(req.params)
+    try {
+      const { userId, productId } = req.params;
+      const user = await User.findById(userId);
+  
+      if (!user) {
+        return res.status(404).send({ message: "User not found" });
+      }
+      console.log("deleted",user)
+  
+      // Ensure the product is in the user's cart before trying to remove it
+      const productIndex = user.cart.indexOf(productId);
+      if (productIndex === -1) {
+        return res.status(404).send({ message: "Product not found in user's cart" });
+      }
+  
+      user.cart.splice(productIndex, 1); // Remove the product ID from the cart
+      
+      await user.save(); // Save the updated user document
+  
+      res.status(200).send( user.cart );
+    } catch (error) {
+      console.error("Error removing product from cart:", error);
+      res.status(500).send({ message: "Server error" });
+    }
+  };
+  

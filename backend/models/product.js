@@ -10,7 +10,8 @@ const productSchema = new mongoose.Schema({
     actualPrice: { type: Number, required: true },
     offerPrice: { type: Number, required: true },
     brand: { type: String, required: true },
-    description: { type: String, required: true }
+    description: { type: String, required: true },
+    quantity: {type: Number, default:1},
 });
 
 module.exports = productSchema;

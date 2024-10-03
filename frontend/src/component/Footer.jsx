@@ -9,12 +9,12 @@ import { FcContacts } from "react-icons/fc";
 
 const Footer = () => {
   return (
-    <footer className="bg-teal-500 text-white p-8">
+    <footer className="w-full bg-teal-500 text-white p-5">
       <div className="container mx-auto flex flex-col flex-wrap text-white justify-between">
         {/* Categories Section */}
         <div className="w-full flex flex-col items-center mb-8">
           <h3 className="text-xl font-bold mb-4">Categories</h3>
-          <div className="flex flex-wrap gap-14 justify-around items-start mt-5">
+          <div className="flex flex-wrap gap-12 justify-around items-start mt-5">
             {categories.map((category) => (
               <div key={category.id} className="mb-4">
                 <Link to={`/category/${category.id}`}>
@@ -72,7 +72,7 @@ const Footer = () => {
         </div>
 
         {/* Contact and About Us Section */}
-        <div className="w-full flex flex-col items-center justify-center mb-8">
+        {/* <div className="w-full flex flex-col items-center justify-center mb-8">
           <h3 className="text-xl font-bold mb-4">Quick Links</h3>
           <ul className="flex flex-col gap-2">
             <li className="flex items-center gap-2">
@@ -94,7 +94,7 @@ const Footer = () => {
               </Link>
             </li>
           </ul>
-        </div>
+        </div> */}
         <div className="container mx-auto text-center">
           <p className="text-xs">&copy; 2024 Omnimart. All Rights Reserved.</p>
           <div className="mt-2">

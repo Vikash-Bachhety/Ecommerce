@@ -7,6 +7,7 @@ import { useSelector } from "react-redux";
 import useUserData from "./useUserData.js";
 import useAddToCart from "./useAddtoCart.js";
 import useAddFav from "./useAddFav.js";
+import useFetchCart from "./useFetchCart.js";
 
 const TopDeals = () => {
   const [deals, setDeals] = useState([]);
@@ -15,7 +16,8 @@ const TopDeals = () => {
   const { handleFav } = useAddFav(favorites, setFavorites, userId);
   const { handleAddToCart } = useAddToCart(cart, setCart, userId, accountType);
 
-  // Fetch top deals
+  useFetchCart();
+
   useEffect(() => {
     const fetchDeals = async () => {
       try {
@@ -51,7 +53,7 @@ const TopDeals = () => {
   }
 
   return (
-    <div className="bg-slate-200 min-h-auto py-4">
+    <div className="bgAnimate bg-slate-200 min-h-auto py-4">
       <div className="mx-auto">
         <h2 className="text-3xl font-bold text-teal-500 mb-8 text-center">
           Top Deals

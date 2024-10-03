@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken');
-const secretKey = "sdfjkler8jfeiwysadf89r9ajlkjf9";
+const secretKey = process.env.SECRET_KEY;
 
 const protectedRoute = (req, res, next) => {
     const token = req.headers.authorization?.split(" ")[1];
