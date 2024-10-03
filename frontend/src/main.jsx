@@ -21,7 +21,6 @@ import ProductDetails from "./component/ProductDetails.jsx";
 import Payment from "./pages/Payment.jsx";
 import MyProducts from "./component/MyProducts.jsx";
 import MyFavorites from "./component/MyFavorites.jsx";
-import UserMenu from "./component/UserMenu.jsx";
 
 const router = createBrowserRouter([
   {
@@ -43,10 +42,6 @@ const router = createBrowserRouter([
       {
         path: "/profile",
         element: <Profile />,
-      },
-      {
-        path: "/UserMenu",
-        element: <UserMenu />,
       },
       {
         path: "/category/:id",
