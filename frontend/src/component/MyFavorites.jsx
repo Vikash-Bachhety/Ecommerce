@@ -64,19 +64,12 @@ const MyProducts = () => {
     <div className="w-full min-h-screen mx-auto p-4">
 
       {products && products.length > 0 ? (
-        <div className="w-full flex flex-col flex-wrap gap-8 items-center justify-center p-8">
-          {/* Back Button */}
-          <button
-            onClick={handleBack}
-            className=" bg-gray-200 text-gray-700 py-2 px-4 rounded-lg hover:bg-gray-300 transition duration-300 flex items-center"
-          >
-            <IoMdArrowRoundBack />
-            <span className="ml-2">Back</span>
-          </button>
-
-          <h2 className="text-3xl font-bold text-teal-500 mb-8 text-center">
+        <div className="w-full flex flex-col items-center justify-center">
+          <h2 className="text-3xl mt-6 font-bold text-teal-500 mb-8">
             My Favorites
           </h2>
+        <div className="flex-wrap flex gap-8 items-center justify-center p-8">
+
           {products.map((product) => (
             <div
               key={product._id}
@@ -109,6 +102,8 @@ const MyProducts = () => {
             </div>
           ))}
         </div>
+        </div>
+
       ) : (
         <div className='h-screen flex flex-col justify-center items-center'>
           <img className="w-20" src={favorite} alt="empty-cart" />

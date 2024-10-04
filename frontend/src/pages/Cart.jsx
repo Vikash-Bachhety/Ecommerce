@@ -24,12 +24,9 @@ function Cart() {
       const response = await axios.delete(`https://omnimart.up.railway.app/api/auth/removeFromCart/${userId}/${id}`);
       console.log("Item removed:", response.data);
 
-      // Check if the cart is empty after removal and trigger a reload
       if (response.data.length === 0) {
-        dispatch(setCart([])); // Clear the cart in Redux
+        dispatch(setCart([]));
       }
-
-      // Toggle the reload state to trigger the re-fetch
       setReload(prev => !prev);
     } catch (error) {
       console.error("Error removing from cart:", error.response?.data || error.message);
@@ -51,7 +48,7 @@ function Cart() {
       {cart && cart.length > 0 ? (
         <div>
           {cart.map((product) => (
-            <div key={product._id} className='flex flex-col h-32 sm:flex-row justify-between px-4 sm:px-6 lg:px-8 bg-white rounded-lg shadow-lg overflow-hidden my-2 w-full max-w-4xl'>
+            <div key={product._id} className='flex flex-col h-32 sm:flex-row border border-slate-600 justify-between px-4 sm:px-6 lg:px-8 bg-white rounded-lg shadow-lg overflow-hidden my-2 w-full max-w-4xl'>
               <div className='py-4 flex-1'>
                 <h2 className='text-slate-600 text-md font-medium mb-2'>{product.name}</h2>
                 <img src={product.image} alt={product.name} className='w-28 h-16 object-cover rounded-md' />
@@ -74,10 +71,10 @@ function Cart() {
                     +
                   </button>
                 </div>
-                <MdOutlineDeleteOutline 
-                  className='cursor-pointer' 
+                <MdOutlineDeleteOutline
+                  className='cursor-pointer'
                   onClick={() => handleRemoveFromCart(product.id)}
-                  size={30} 
+                  size={30}
                 />
               </div>
             </div>

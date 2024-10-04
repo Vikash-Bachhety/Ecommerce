@@ -34,12 +34,6 @@ function Navbar() {
     setSidebarOpen(!sidebarOpen);
   };
 
-  const handleCategoryClick = (id) => {
-    navigate(`/category/${id}`);
-    setSidebarOpen(false);
-    setHoveredCategory(null); // Close dropdown
-  };
-
   const handleSubCategoryClick = (category, subcategory) => {
     navigate(`/${category}/${subcategory}`);
     setHoveredCategory(null); // Close the dropdown when a subcategory is clicked
@@ -47,7 +41,7 @@ function Navbar() {
 
   return (
     <div className="sticky top-0 w-full z-40 flex flex-col">
-      <nav className={`bg-teal-500 w-full text-white px-4 ${sidebarOpen ? "hidden" : ""}`}>
+      <nav className={`bg-teal-500 w-full text-white  p-0.5 px-4 ${sidebarOpen ? "hidden" : ""}`}>
         <div className="flex h-16 justify-between items-center relative">
           {/* Logo */}
           <div className="logo flex flex-col items-center">
@@ -68,7 +62,7 @@ function Navbar() {
           <div className={`md:flex items-center space-x-4 ${sidebarOpen ? "hidden" : ""}`}>
             <Link
               to="/"
-              className="hidden xl:block rounded-md px-4 py-2 hover:text-white hover:bg-opacity-20 hover:bg-slate-900"
+              className="hidden xl:block text-xl rounded-md px-4 py-2 hover:text-white hover:bg-opacity-20 hover:bg-slate-900"
             >
               Home
             </Link>
@@ -108,22 +102,22 @@ function Navbar() {
       </nav>
 
       {/* Bottom navigation with categories */}
-      <ul className="w-full flex justify-center items-center gap-8 bg-teal-700 text-white">
+      <ul className="w-full flex justify-center items-center gap-10 bg-teal-700 text-white text-lg">
         {categories.map((category) => (
           <li
             key={category.id}
-            className="relative cursor-pointer py-2"
+            className="relative cursor-pointer py-2 font-semibold "
             onMouseEnter={() => setHoveredCategory(category.id)}
             onMouseLeave={() => setHoveredCategory(null)}
           >
             <span>{category.name}</span>
             {/* Subcategory dropdown on hover */}
             {hoveredCategory === category.id && (
-              <ul className="absolute w-36 -left-12 mt-2 bg-white text-teal-500 rounded-lg shadow-lg z-30 mt-2">
+              <ul className="absolute w-40 -left-8 mt-2 bg-white text-teal-500 rounded-lg shadow-lg z-30 mt-2">
                 {category.subcategories.map((subCategory) => (
                   <li key={subCategory.id}>
                     <button
-                      className="block text-sm px-4 py-2 hover:bg-rose-400 hover:text-white hover:rounded-lg w-full text-left"
+                      className="block text-md px-4 py-2 hover:bg-rose-400 font-normal hover:text-white hover:rounded-lg w-full text-left"
                       onClick={() => handleSubCategoryClick(category.name, subCategory.name)}
                     >
                       {subCategory.name}
