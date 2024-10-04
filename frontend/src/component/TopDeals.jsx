@@ -24,7 +24,7 @@ const TopDeals = () => {
     const fetchDeals = async () => {
       try {
         const response = await axios.get(
-          `${REACT_APP_API_BASE_URL}/api/products/topdeals`
+          `${process.env.REACT_APP_API_BASE_URL}/api/products/topdeals`
         );
         const allProducts = response.data.flatMap((item) => item.products);
         const productsWithDiscount = allProducts.map((product) => {

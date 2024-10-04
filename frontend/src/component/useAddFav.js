@@ -26,7 +26,7 @@ function useAddFav(favorites, setFavorites, userId) {
     // Perform the API call to update the favorites on the server
     try {
       await axios.put(
-        `${REACT_APP_API_BASE_URL}/api/products/updateFavorites/${userId}`,
+        `${process.env.REACT_APP_API_BASE_URL}/api/products/updateFavorites/${userId}`,
         { favorites: updatedFavorites }
       );
 

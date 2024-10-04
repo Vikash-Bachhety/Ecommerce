@@ -25,7 +25,7 @@ function useUserData() {
         try {
           setLoading(true);
           const response = await axios.get(
-            `${REACT_APP_API_BASE_URL}/api/auth/getuser/${userId}`
+            `${process.env.REACT_APP_API_BASE_URL}/api/auth/getuser/${userId}`
           );
           setCart(response.data.cart || []);
           setFavorites(response.data.favorites || []);

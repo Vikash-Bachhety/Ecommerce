@@ -15,7 +15,7 @@ const useFetchCart = (reload) => {
       try {
         const decoded = jwtDecode(token);
         const userId = decoded.user.id;
-        const response = await axios.get(`${REACT_APP_API_BASE_URL}/api/auth/${userId}/mycart`);
+        const response = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/api/auth/${userId}/mycart`);
         if(!response.ok){
           console.log(response.data.message)
         }

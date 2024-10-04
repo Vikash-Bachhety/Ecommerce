@@ -15,7 +15,7 @@ const Profile = () => {
 
             const fetchUserData = async () => {
                 try {
-                    const response = await axios.get(`${REACT_APP_API_BASE_URL}/api/auth/getuser/${userId}`);
+                    const response = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/api/auth/getuser/${userId}`);
                     setUserData(response.data);
                     // console.log(response.data);
                 } catch (err) {
