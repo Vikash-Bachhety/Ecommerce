@@ -4,7 +4,7 @@ import { increaseQuantity, decreaseQuantity } from '../component/cartSlice.js';
 import empty from '../assets/empty.png';
 import { useNavigate } from 'react-router-dom';
 import { MdOutlineDeleteOutline } from "react-icons/md";
-import useFetchCart from '../component/useFetchCart'; // Import the custom hook
+import useFetchCart from '../component/useFetchCart';
 import useUserData from '../component/useUserData.js';
 import axios from 'axios';
 import { setCart } from '../component/cartSlice.js';
@@ -15,15 +15,13 @@ function Cart() {
   const cart = useSelector(state => state.cart.cart);
   const { userId } = useUserData();
 
-  // State for tracking re-fetches
   const [reload, setReload] = useState(false);
 
-  // Use the custom useFetchCart hook, passing the reload state
   useFetchCart(reload);
 
   const handleRemoveFromCart = async (id) => {
     try {
-      const response = await axios.delete(`https://omnimart-ecom.vercel.app/api/auth/removeFromCart/${userId}/${id}`);
+      const response = await axios.delete(`https://omnimart.up.railway.app/api/auth/removeFromCart/${userId}/${id}`);
       console.log("Item removed:", response.data);
 
       // Check if the cart is empty after removal and trigger a reload
