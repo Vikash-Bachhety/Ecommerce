@@ -11,11 +11,9 @@ function SignIn() {
   const { handleSubmit, control, reset, formState: { errors } } = useForm();
   const [passwordVisible, setPasswordVisible] = useState(false);
 
-  const apiUrl = process.env.REACT_APP_API_BASE_URL;
-
   const handleSignin = async (data) => {
     try {
-      const response = await axios.post(`${apiUrl}/api/auth/signin`, {
+      const response = await axios.post(`${REACT_APP_API_BASE_URL}/api/auth/signin`, {
         email: data.email,
         password: data.password,
       });

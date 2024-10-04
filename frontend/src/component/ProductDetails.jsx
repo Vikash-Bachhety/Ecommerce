@@ -17,7 +17,7 @@ const ProductDetails = () => {
     const fetchProduct = async () => {
       try {
         const response = await axios.get(
-          `${process.env.REACT_APP_API_BASE_URL}/api/products/${id}`
+          `https://omnimart.up.railway.app/api/products/${id}`
         );
         setProduct(response.data);
       } catch (error) {

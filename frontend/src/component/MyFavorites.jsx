@@ -24,7 +24,7 @@ const MyProducts = () => {
         const decoded = jwtDecode(token);
         const userId = decoded.user.id;
         const response = await axios.get(
-          `${process.env.REACT_APP_API_BASE_URL}/api/auth/${userId}/myfavorites`
+          `https://omnimart.up.railway.app/api/auth/${userId}/myfavorites`
         );
         setProducts(response.data);
         setLoading(false);

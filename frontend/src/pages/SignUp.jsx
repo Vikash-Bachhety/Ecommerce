@@ -18,7 +18,7 @@ function SignUp() {
 
   const handleSignUp = async (data) => {
     try {
-      const response = await axios.post(`${process.env.REACT_APP_API_BASE_URL}/api/auth/signup`, {
+      const response = await axios.post(`https://omnimart.up.railway.app/api/auth/signup`, {
         accountType: data.accountType,
         firstName: data.firstName,
         lastName: data.lastName,

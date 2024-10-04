@@ -19,7 +19,7 @@ const MyProducts = () => {
       try {
         const decoded = jwtDecode(token);
         const userId = decoded.user.id;
-        const response = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/api/auth/${userId}/myproducts`);
+        const response = await axios.get(`https://omnimart.up.railway.app/api/auth/${userId}/myproducts`);
         setCategories(response.data); // Now this is the list of categories with products
         setLoading(false);
       } catch (error) {

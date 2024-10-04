@@ -91,7 +91,7 @@ const BusinessCard = () => {
       const token = localStorage.getItem("token");
 
       const response = await axios.post(
-        `${process.env.REACT_APP_API_BASE_URL}/api/businesscards/add`,
+        `https://omnimart.up.railway.app/api/businesscards/add`,
         {
           category: data.category,
           subcategory: data.subcategory,
