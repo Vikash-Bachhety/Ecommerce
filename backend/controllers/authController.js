@@ -220,3 +220,32 @@ exports.removeFromCart = async (req, res) => {
     }
   };
   
+
+  exports.removeFromFav = async (req, res) => {
+  console.log(req.params)
+    try {
+      const { userId, productId } = req.params;
+      const user = await User.findById(userId);
+  
+      if (!user) {
+        return res.status(404).send({ message: "User not found" });
+      }
+      console.log("deleted",user)
+  
+      // Ensure the product is in the user's cart before trying to remove it
+      const productIndex = user.favorites.indexOf(productId);
+      if (productIndex === -1) {
+        return res.status(404).send({ message: "Product not found in user's cart" });
+      }
+  
+      user.favorites.splice(productIndex, 1); // Remove the product ID from the cart
+      
+      await user.save(); // Save the updated user document
+  
+      res.status(200).send( user.favorites );
+    } catch (error) {
+      console.error("Error removing product from cart:", error);
+      res.status(500).send({ message: "Server error" });
+    }
+  };
+  

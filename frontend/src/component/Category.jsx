@@ -3,16 +3,16 @@ import { categories } from "./category.js";
 
 const Category = () => {
   return (
-    <div className="bgAnimate bg-slate-200 min-h-screen p-8">
-      <div className="container mx-auto">
-        <h2 className="text-3xl font-bold text-teal-500 mb-8 text-center">
-          Categories
+    <div className="bg-teal-100 min-h-screen pb-6 mx-2">
+      <div className="mx-auto">
+      <h2 className="text-2xl font-bold p-2 mb-2">
+      Categories
         </h2>
-        <div className="flex flex-wrap justify-center gap-8 w-full">
+        <div className="flex flex-wrap justify-center gap-4 w-full">
           {categories.map((category) => (
             <div
               key={category.id}
-              className="bg-white min-w-40 w-72 h-92 p-3 flex-wrap rounded-lg shadow-md flex flex-col min-w-md flex"
+              className="bg-white min-w-40 w-60 h-92 p-4 flex-wrap rounded-sm shadow-md flex flex-col min-w-md flex"
             >
               <img
                 src={category.image}

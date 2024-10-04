@@ -9,5 +9,6 @@ router.get('/:userId/myproducts', authController.myproducts);
 router.get('/:userId/myfavorites', authController.myfavorites);
 router.get('/:userId/mycart', authController.mycart);
 router.delete('/removeFromCart/:userId/:productId', authController.removeFromCart);
+router.delete('/removeFromFav/:userId/:productId', authController.removeFromFav);
 
 module.exports = router;

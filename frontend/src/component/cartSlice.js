@@ -51,7 +51,7 @@ const cartSlice = createSlice({
         description: item.description,
         price: item.offerPrice, 
         image: item.imageUrl,
-        quantity: 1 // Assuming initial quantity to be 1 for fetched items
+        quantity: 1
       }));
     }
   } 

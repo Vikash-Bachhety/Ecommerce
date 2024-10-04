@@ -1,10 +1,10 @@
 @keyframes backgroundChange {
-  /* 0% { background-image: url('../assets/bgImages/agra.jpg'); } */
   0% { background-image: url('../assets/bgImages/1.jpg'); }
-  50% { background-image: url('../assets/bgImages/2.jpg'); }
-  100% { background-image: url('../assets/bgImages/3.jpg'); }
-  /* 80% { background-image: url('../assets/bgImages/delhi.jpg'); }
-  100% { background-image: url('../assets/bgImages/agra.jpg'); } */
+  20% { background-image: url('../assets/bgImages/2.jpg'); }
+  40% { background-image: url('../assets/bgImages/3.jpg'); }
+  50% { background-image: url('../assets/bgImages/4.jpg'); }
+  80% { background-image: url('../assets/bgImages/5.jpg'); }
+  100% { background-image: url('../assets/bgImages/6.jpg'); }
 }
 
 .animated-background {
@@ -30,21 +30,15 @@
   position: relative;
   z-index: 2;
 }
-
-.bgAnimate {
-  animation: backgroundColorAnimation 10s ease infinite; /* Adjust duration and timing */
-  background: linear-gradient(270deg, #2c3e50, #4b79a1, #192f6a, #0c2461, #4a4e69, #282c34); /* Starting gradient */
-  background-size: 400% 400%; /* This allows for a smooth animation effect */
-}
-
-@keyframes backgroundColorAnimation {
-  0% {
-    background-position: 0% 50%; /* Starting position */
-  }
-  50% {
-    background-position: 100% 50%; /* Middle position */
-  }
-  100% {
-    background-position: 0% 50%; /* Ending position */
-  }
+.logo-text {
+  font-family: 'Poppins', sans-serif; /* You can choose another stylish font */
+  font-weight: 900; /* Extra bold */
+  font-size: 1.5rem; /* Adjust as needed */
+  background: linear-gradient(90deg, #ff7e5f, #feb47b, #e1e786, #e391ea); /* Gradient colors */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  /* text-fill-color: transparent; */
+  text-transform: uppercase; /* Makes the text uppercase */
+  letter-spacing: 1px; /* Adds spacing between letters */
 }

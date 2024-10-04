@@ -9,7 +9,7 @@ import useAddToCart from "./useAddtoCart.js";
 const ProductDetails = () => {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
-  const { isLoggedIn, accountType } = useSelector((state) => state.auth);
+  const { accountType } = useSelector((state) => state.auth);
   const { cart, setCart, userId, loading } = useUserData();
   const { handleAddToCart } = useAddToCart(cart, setCart, userId, accountType);
 
@@ -17,7 +17,7 @@ const ProductDetails = () => {
     const fetchProduct = async () => {
       try {
         const response = await axios.get(
-          `https://omnimart.up.railway.app/api/products/${id}`
+          `${REACT_APP_API_BASE_URL}/api/products/${id}`
         );
         setProduct(response.data);
       } catch (error) {

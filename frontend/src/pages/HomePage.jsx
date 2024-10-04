@@ -6,7 +6,7 @@ import "./bgAnimate.css";
 const HomePage = () => {
   
   return (
-    <div className="bgAnimate bg-slate-200 min-h-screen flex flex-col">
+    <div className="bgAnimate bg-white min-h-screen flex flex-col">
       {/* Hero Section */}
       <section className="animated-background text-white flex-1 flex items-center justify-center py-16">
         <div className="flex flex-col justify-center h-60 mx-auto text-center">
