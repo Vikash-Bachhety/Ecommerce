@@ -62,7 +62,7 @@ function Navbar() {
           <div className={`md:flex items-center space-x-4 ${sidebarOpen ? "hidden" : ""}`}>
             <Link
               to="/"
-              className="hidden xl:block text-xl rounded-md px-4 py-2 hover:text-white hover:bg-opacity-20 hover:bg-slate-900"
+              className="hidden xl:block text-md rounded-md px-4 py-2 hover:text-white hover:bg-opacity-20 hover:bg-slate-900"
             >
               Home
             </Link>
@@ -102,7 +102,7 @@ function Navbar() {
       </nav>
 
       {/* Bottom navigation with categories */}
-      <ul className="w-full flex justify-center items-center gap-10 bg-teal-700 text-white text-lg">
+      <ul className="w-full flex justify-center items-center gap-14 bg-teal-700 text-white text-md">
         {categories.map((category) => (
           <li
             key={category.id}
@@ -113,7 +113,7 @@ function Navbar() {
             <span>{category.name}</span>
             {/* Subcategory dropdown on hover */}
             {hoveredCategory === category.id && (
-              <ul className="absolute w-40 -left-8 mt-2 bg-white text-teal-500 rounded-lg shadow-lg z-30 mt-2">
+              <ul className="absolute w-44 -left-8 mt-2 bg-white text-teal-500 rounded-lg shadow-lg z-30 mt-2">
                 {category.subcategories.map((subCategory) => (
                   <li key={subCategory.id}>
                     <button
