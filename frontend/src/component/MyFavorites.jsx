@@ -51,7 +51,7 @@ const MyProducts = () => {
   const handleRemoveFav = async (id) => {
     try {
       const response = await axios.delete(
-        `http://localhost:5000/api/auth/removeFromFav/${userId}/${id}`
+        `https://omnimart.up.railway.app/api/auth/removeFromFav/${userId}/${id}`
       );
       setId(id);
       console.log(response.data);
