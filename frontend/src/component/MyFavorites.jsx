@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useSelector } from "react-redux";
-import {jwtDecode} from "jwt-decode"; // Corrected import statement
+import { jwtDecode } from "jwt-decode"; // Corrected import statement
 import { useNavigate } from "react-router-dom";
 import { IoMdArrowRoundBack } from "react-icons/io";
 import useUserData from "./useUserData.js";
@@ -64,19 +64,19 @@ const MyProducts = () => {
     <div className="w-full min-h-screen mx-auto p-4">
 
       {products && products.length > 0 ? (
-        <div className="w-full flex flex-wrap gap-8 items-center justify-center p-8">
-      {/* Back Button */}
-      <button
-        onClick={handleBack}
-        className=" bg-gray-200 text-gray-700 py-2 px-4 rounded-lg hover:bg-gray-300 transition duration-300 flex items-center"
-      >
-        <IoMdArrowRoundBack />
-        <span className="ml-2">Back</span>
-      </button>
+        <div className="w-full flex flex-col flex-wrap gap-8 items-center justify-center p-8">
+          {/* Back Button */}
+          <button
+            onClick={handleBack}
+            className=" bg-gray-200 text-gray-700 py-2 px-4 rounded-lg hover:bg-gray-300 transition duration-300 flex items-center"
+          >
+            <IoMdArrowRoundBack />
+            <span className="ml-2">Back</span>
+          </button>
 
-      <h2 className="text-3xl font-bold text-teal-500 mb-8 text-center">
-        My Favorites
-      </h2>
+          <h2 className="text-3xl font-bold text-teal-500 mb-8 text-center">
+            My Favorites
+          </h2>
           {products.map((product) => (
             <div
               key={product._id}
@@ -113,7 +113,7 @@ const MyProducts = () => {
         <div className='h-screen flex flex-col justify-center items-center'>
           <img className="w-20" src={favorite} alt="empty-cart" />
           <p className="text-lg font-semibold text-gray-700 mt-4">
-          No favorite product available.
+            No favorite product available.
           </p>
         </div>
       )}
