@@ -5,7 +5,7 @@ const Category = () => {
   return (
     <div className="bg-teal-100 min-h-screen pb-6">
       <div className="max-w-7xl mx-auto">
-        <h2 className="text-2xl font-bold p-2 mb-4 text-center sm:text-3xl md:text-4xl lg:text-5xl">
+        <h2 className="text-2xl font-bold p-2 mb-4 text-center sm:text-3xl md:text-4xl">
           Categories
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">

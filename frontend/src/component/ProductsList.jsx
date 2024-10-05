@@ -8,6 +8,7 @@ import useUserData from "./useUserData";
 import useAddFav from "./useAddFav.js";
 import useAddToCart from "./useAddtoCart.js";
 import { useNavigate } from "react-router-dom";
+import { FaSmile } from 'react-icons/fa';
 
 const ProductList = () => {
   const { category, subcategory } = useParams();
@@ -37,7 +38,7 @@ const ProductList = () => {
           {products.map((deal) => (
             <div
             key={deal._id}
-            className="bg-white min-w-40 w-auto h-auto p-4 flex-wrap rounded-sm shadow-md flex-col min-w-md flex"
+            className="bg-white min-w-40 w-auto sm:w-96 h-auto p-4 flex-wrap rounded-sm shadow-md flex-col min-w-md flex"
             >
             <img
               src={deal.imageUrl}
@@ -112,8 +113,13 @@ const ProductList = () => {
           ))}
         </div>
       ) : (
-        <p className="text-center text-gray-500">No products found.</p>
-      )}
+        <div className="flex flex-col items-center text-center min-h-96 justify-center">
+        <FaSmile size={70} className="text-gray-400 mb-4" />
+        <p className="text-lg font-semibold text-gray-600">
+          No products added yet. <br />
+          <span className="text-teal-500">Products will be added soon!</span>
+        </p>
+      </div>      )}
     </div>
   );
 };
