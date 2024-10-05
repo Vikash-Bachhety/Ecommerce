@@ -1,29 +1,25 @@
 import axios from "axios";
 import { useSelector } from "react-redux";
-import { toast } from "react-toastify"; // Ensure this is installed
+import { toast } from "react-toastify";
 
 function useAddFav(favorites, setFavorites, userId) {
   const { accountType } = useSelector((state) => state.auth);
   
   const handleFav = async (dealId) => {
     if (!userId) {
-      toast.warn("Please sign in to add products to the cart.");
+      toast.warn("Please sign in first.");
       navigate("/signin");
       return;
     } else if (accountType === "business") {
       toast.error("Please log in with a user account.");
       return;
     }
-    // Determine if we're adding or removing the item
     const isFavoriting = !favorites.includes(dealId);
     const updatedFavorites = isFavoriting
-      ? [...favorites, dealId] // Add to favorites
-      : favorites.filter((id) => id !== dealId); // Remove from favorites
-
-    // Optimistically update the local favorites state
+      ? [...favorites, dealId] 
+      : favorites.filter((id) => id !== dealId);
     setFavorites(updatedFavorites);
 
-    // Perform the API call to update the favorites on the server
     try {
       await axios.put(
         `https://omnimart.up.railway.app/api/products/updateFavorites/${userId}`,
