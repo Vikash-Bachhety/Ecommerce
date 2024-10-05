@@ -156,7 +156,7 @@ export const categories = [
     id: 4,
     name: "Beauty",
     description: "Explore beauty products for skincare, haircare, and makeup.",
-    image: "https://booksy.com/l/wp-content/uploads/2022/01/cosmetologist-applying-mask-face-client-beauty-salon-995x790.jpg",
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcReFY5sGkv4hGroS7wTfNOu4gofv-CSRrqUiQ&usqp=CAU",
     subcategories: [
       {
         id: 1,
