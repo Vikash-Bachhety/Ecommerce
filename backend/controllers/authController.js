@@ -92,6 +92,7 @@ exports.myproducts = async (req, res) => {
     }
     const productIds = user.businessCard.map((card) => card.toString());
     const products = await BusinessCard.find({ _id: { $in: productIds } });
+    console.log(products);
     if (!products || products.length === 0) {
       return res
         .status(404)
