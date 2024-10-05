@@ -13,10 +13,11 @@ import { useNavigate } from "react-router-dom";
 const TopDeals = () => {
   const [deals, setDeals] = useState([]);
   const { accountType } = useSelector((state) => state.auth);
-  const { cart, setCart, favorites, setFavorites, userId, loading } = useUserData();
+  const { cart, setCart, favorites, setFavorites, userId } = useUserData();
   const { handleFav } = useAddFav(favorites, setFavorites, userId);
   const { handleAddToCart } = useAddToCart(cart, setCart, userId, accountType);
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(true);
 
   useFetchCart();
 
@@ -26,6 +27,8 @@ const TopDeals = () => {
         const response = await axios.get(
           `https://omnimart.up.railway.app/api/products/topdeals`
         );
+        console.log(response.data)
+        setLoading(false);
         const allProducts = response.data.flatMap((item) => item.products);
         const productsWithDiscount = allProducts.map((product) => {
           const discountPercentage = (

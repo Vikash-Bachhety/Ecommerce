@@ -91,7 +91,7 @@ function Navbar() {
             ) : (
               <Link
                 to="/signin"
-                className="hidden md:block p-2 font-medium rounded-sm bg-yellow-500 hover:bg-yellow-400"
+                className="hidden md:block p-2 font-medium rounded-md bg-rose-500 hover:bg-red-400"
               >
                 Login
                 <PiSignInFill size={20} className="inline ml-2" />

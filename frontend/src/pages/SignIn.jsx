@@ -124,7 +124,7 @@ function SignIn() {
 
           <button
             type="submit"
-            className="w-full py-2 md:py-3 bg-rose-400 text-white rounded-lg font-semibold hover:bg-highlight transition-colors"
+            className="w-full py-2 md:py-3 bg-rose-500 text-white rounded-lg font-semibold hover:bg-red-400 transition-colors"
           >
             Sign In
           </button>
