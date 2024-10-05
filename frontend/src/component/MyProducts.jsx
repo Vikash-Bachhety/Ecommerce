@@ -21,6 +21,7 @@ const MyProducts = () => {
         const userId = decoded.user.id;
         const response = await axios.get(`https://omnimart.up.railway.app/api/auth/${userId}/myproducts`);
         setCategories(response.data); // Now this is the list of categories with products
+        console.log(response.data)
         setLoading(false);
       } catch (error) {
         console.error('Error fetching user products:', error);

@@ -41,7 +41,8 @@ const TopDeals = () => {
         const sortedProducts = productsWithDiscount.sort(
           (a, b) => b.discountPercentage - a.discountPercentage
         );
-        setDeals(sortedProducts);
+        // Limit to the top 10 products
+        setDeals(sortedProducts.slice(0, 8));
       } catch (error) {
         console.error("Error fetching deals:", error);
       }
@@ -54,9 +55,9 @@ const TopDeals = () => {
     return <div className="text-center py-8">Loading...</div>;
   }
 
-  const handleProductClick = (id)=> {
-    navigate(`/product/${id}`)
-  }
+  const handleProductClick = (id) => {
+    navigate(`/product/${id}`);
+  };
 
   return (
     <div className="bg-yellow-100 min-h-auto pb-6 m-2">
@@ -69,10 +70,10 @@ const TopDeals = () => {
             <div
               key={deal._id}
               className="bg-white min-w-40 w-72 h-72 p-4 flex-wrap rounded-sm shadow-md flex-col min-w-md flex"
-              >
+            >
               <img
                 src={deal.imageUrl}
-                onClick={()=>{handleProductClick(deal._id)}}
+                onClick={() => { handleProductClick(deal._id); }}
                 alt={deal.productName}
                 className="h-40 w-full mb-2 object-cover rounded-lg"
               />
@@ -105,19 +106,6 @@ const TopDeals = () => {
                   {deal.discountPercentage}% Off
                 </span>
               </div>
-              {/* <div className="w-full">
-                <p className="line-clamp-2 text-sm mb-2 sm:mb-0">
-                  {deal.description}
-                </p>
-              </div> */}
-              {/* <Link
-                to={`/product/${deal._id}`}
-                className="flex text-sm items-center font-semibold text-blue-500"
-              >
-                View Product
-                <FaArrowRight className="ml-2 mt-1 text-blue-500" />
-              </Link> */}
-
               {cart.includes(deal._id) ? (
                 <button
                   onClick={() => {

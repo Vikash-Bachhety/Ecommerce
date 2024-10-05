@@ -15,16 +15,16 @@ const SubCategory = () => {
         {subcategories.map((subcategory) => (
           <div
             key={subcategory.id}
-            className="bg-white p-6 rounded-lg shadow-lg flex flex-col items-center"
+            className="bg-white w-60 h-80 p-2 rounded-lg shadow-lg flex flex-col items-center"
           >
             <img
               src={subcategory.image || 'default-image-url'}
               alt={subcategory.name}
-              className="w-full h-48 object-cover mb-4 rounded-lg"
+              className="w-full h-40 object-contain rounded-lg"
             />
-            <div className="p-4 flex flex-col items-center w-96">
-              <h3 className="text-xl font-bold mb-2 text-center">{subcategory.name}</h3>
-              <p className="text-teal-500 text-sm mb-4 truncate w-full text-center">
+            <div className="p-4 flex flex-col items-center w-full">
+              <h3 className="text-lg font-bold text-center">{subcategory.name}</h3>
+              <p className="text-teal-500 text-sm mb-4 w-full text-center">
                 {truncate(subcategory.description, { length: 100, separator: " " })}
               </p>
               <Link

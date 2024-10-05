@@ -10,9 +10,9 @@ const HomePage = () => {
       {/* Hero Section */}
       <section className="animated-background text-white flex-1 flex items-center justify-center py-16">
         <div className="flex flex-col justify-center h-60 mx-auto text-center">
-          <h1 className="text-4xl md:text-6xl font-bold mb-4">
+          {/* <h1 className="text-4xl md:text-6xl font-bold mb-4">
             Discover the Best Deals in Your City
-          </h1>
+          </h1> */}
           {/* <p className="text-lg md:text-2xl mb-8">
             Find amazing discounts, explore events, and uncover hidden gems
             around you.
