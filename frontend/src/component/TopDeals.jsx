@@ -41,7 +41,7 @@ const TopDeals = () => {
         const sortedProducts = productsWithDiscount.sort(
           (a, b) => b.discountPercentage - a.discountPercentage
         );
-        // Limit to the top 10 products
+        // Limit to the top 8 products
         setDeals(sortedProducts.slice(0, 8));
       } catch (error) {
         console.error("Error fetching deals:", error);
@@ -75,7 +75,7 @@ const TopDeals = () => {
                 src={deal.imageUrl}
                 onClick={() => { handleProductClick(deal._id); }}
                 alt={deal.productName}
-                className="h-40 w-full mb-2 object-cover rounded-lg"
+                className="h-40 w-full mb-2 object-contain rounded-lg"
               />
               <div className="flex items-center justify-between">
                 <h3 className="text-sm font-semibold text-slate-800">

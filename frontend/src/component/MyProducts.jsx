@@ -70,12 +70,12 @@ const MyProducts = () => {
               <img
                 src={product.imageUrl}
                 alt={product.productName}
-                className="h-48 w-full object-cover mb-4 rounded-lg"
+                className="h-48 w-full object-contain mb-4 rounded-lg"
               />
               <h3 className="text-xl font-semibold text-primary mb-2">{product.productName}</h3>
               <p className="text-gray-700 mb-2"><b>Price</b>: ₹{product.actualPrice}</p>
               <p className="text-gray-700 mb-2"><b>Offer Price</b>: ₹{product.offerPrice}</p>
-              <p className="text-gray-600 mb-4"><b>Description</b>:{product.description}</p>
+              <p className="text-gray-600 mb-4 line-clamp-4"><b>Description</b>:{product.description}</p>
               <p className="text-gray-500 mb-2"><b>Brand</b>: {product.brand}</p>
               <p className="text-gray-500 mb-2"><b>Shop</b>: {product.shop}</p>
               <p className="text-gray-500 mb-2"><b>Category</b>: {categoryItem.category}</p>

@@ -37,13 +37,13 @@ const ProductList = () => {
           {products.map((deal) => (
             <div
             key={deal._id}
-            className="bg-white min-w-40 w-72 h-auto p-4 flex-wrap rounded-sm shadow-md flex-col min-w-md flex"
+            className="bg-white min-w-40 w-auto h-auto p-4 flex-wrap rounded-sm shadow-md flex-col min-w-md flex"
             >
             <img
               src={deal.imageUrl}
               onClick={()=>{handleProductClick(deal._id)}}
               alt={deal.productName}
-              className="h-40 w-full mb-2 object-cover rounded-lg cursor-pointer"
+              className="h-40 w-full mb-2 object-contain rounded-lg cursor-pointer"
             />
             <div className="flex items-center justify-between">
               <h3 className="text-sm font-semibold text-slate-800">
@@ -67,7 +67,7 @@ const ProductList = () => {
               <span className="text-md font-semibold mb-2 sm:mb-0">
                 ₹{deal.offerPrice.toFixed(2)}
               </span>
-              <span className="text-sm text-slate-700 line-through mb-2 sm:mb-0">
+              <span className="text-xs text-slate-700 line-through mb-2 sm:mb-0">
                 M.R.P ₹{deal.actualPrice.toFixed(2)}
               </span>
               <span className="text-sm text-red-500 bg-rose-500 text-white px-2 rounded-sm font-semibold">

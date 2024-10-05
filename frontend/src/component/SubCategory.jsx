@@ -7,24 +7,24 @@ const SubCategory = () => {
   const subcategories = category ? category.subcategories : [];
 
   return (
-    <div className="bg-slate-200 p-8">
-      <h2 className="text-3xl font-bold text-teal-500 mb-8 text-center">
+    <div className="bg-blue-200 min-h-screen p-8 m-2">
+      <h2 className="text-3xl font-bold mb-8 text-center">
         {category ? category.name : "Subcategories"}
       </h2>
       <div className="flex flex-wrap justify-center gap-8">
         {subcategories.map((subcategory) => (
           <div
             key={subcategory.id}
-            className="bg-white w-60 h-80 p-2 rounded-lg shadow-lg flex flex-col items-center"
+            className="bg-white w-60 h-72 p-2 rounded-lg shadow-lg flex flex-col items-center"
           >
             <img
               src={subcategory.image || 'default-image-url'}
               alt={subcategory.name}
-              className="w-full h-40 object-contain rounded-lg"
+              className="w-full h-36 object-contain rounded-lg"
             />
             <div className="p-4 flex flex-col items-center w-full">
               <h3 className="text-lg font-bold text-center">{subcategory.name}</h3>
-              <p className="text-teal-500 text-sm mb-4 w-full text-center">
+              <p className="text-teal-500 truncate text-sm mb-4 w-full text-center">
                 {truncate(subcategory.description, { length: 100, separator: " " })}
               </p>
               <Link

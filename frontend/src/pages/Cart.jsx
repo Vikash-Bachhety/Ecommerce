@@ -48,10 +48,10 @@ function Cart() {
       {cart && cart.length > 0 ? (
         <div>
           {cart.map((product) => (
-            <div key={product._id} className='flex flex-col h-32 sm:flex-row border border-slate-600 justify-between px-4 sm:px-6 lg:px-8 bg-white rounded-lg shadow-lg overflow-hidden my-2 w-full max-w-4xl'>
+            <div key={product._id} className='flex flex-col h-32 sm:flex-row border border-slate-600 justify-between px-4 sm:px-6 lg:px-4 bg-white rounded-lg shadow-lg overflow-hidden my-2 w-full max-w-4xl'>
               <div className='py-4 flex-1'>
-                <h2 className='text-slate-600 text-md font-medium mb-2'>{product.name}</h2>
-                <img src={product.image} alt={product.name} className='w-28 h-16 object-cover rounded-md' />
+                <h2 className='text-slate-600 text-md font-medium ml-5 mb-2'>{product.name}</h2>
+                <img src={product.image} alt={product.name} className='w-28 h-16 object-contain rounded-md' />
               </div>
               <div className='py-4 flex-1 flex flex-col sm:flex-row items-center justify-between'>
                 <p className='text-blue-400 text-xl px-10 font-semibold mb-2 sm:mb-0'>{product.price}₹</p>

@@ -51,7 +51,7 @@ const ProductDetails = () => {
             </h1>
 
             <p className="text-lg mb-4">₹{product.offerPrice}</p>
-            <p className="text-lg line-through mb-4">₹{product.actualPrice}</p>
+            <p className="text-lg line-through mb-4"><b>MRP</b> ₹{product.actualPrice}</p>
             <p className="text-md mb-4">{product.description}</p>
             {cart.includes(product._id) ? (
                 <button
