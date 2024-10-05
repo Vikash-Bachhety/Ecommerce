@@ -40,7 +40,7 @@ const ProductDetails = () => {
   }
 
   return (
-    <div className="bg-slate-200 min-h-auto py-4">
+    <div className="bg-white min-h-auto py-4">
       <div className="container mx-auto px-4">
         <div className="flex flex-col items-center sm:flex-row gap-8">
           <img
