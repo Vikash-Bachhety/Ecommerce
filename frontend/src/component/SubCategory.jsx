@@ -7,15 +7,15 @@ const SubCategory = () => {
   const subcategories = category ? category.subcategories : [];
 
   return (
-    <div className="bg-blue-200 min-h-screen p-8 m-2">
-      <h2 className="text-3xl font-bold mb-8 text-center">
+    <div className="bg-blue-200 min-h-screen p-4 sm:p-8 my-2">
+      <h2 className="text-2xl sm:text-3xl font-bold mb-8 text-center">
         {category ? category.name : "Subcategories"}
       </h2>
-      <div className="flex flex-wrap justify-center gap-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 justify-center">
         {subcategories.map((subcategory) => (
           <div
             key={subcategory.id}
-            className="bg-white w-60 h-72 p-2 rounded-lg shadow-lg flex flex-col items-center"
+            className="bg-white w-full h-auto p-4 rounded-lg shadow-lg flex flex-col items-center"
           >
             <img
               src={subcategory.image || 'default-image-url'}
@@ -41,6 +41,7 @@ const SubCategory = () => {
   );
 };
 
+// Helper function to truncate text
 const truncate = (text, options) => {
   const { length, separator } = options;
   if (text.length <= length) return text;

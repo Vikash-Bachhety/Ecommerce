@@ -44,8 +44,8 @@ function Navbar() {
       <nav className={`bg-teal-500 w-full text-white  p-0.5 px-4 ${sidebarOpen ? "hidden" : ""}`}>
         <div className="flex h-16 justify-between items-center relative">
           {/* Logo */}
-          <div className="logo flex flex-col items-center">
-            <p className="hidden lg:block logo-text">Omnimart</p>
+          <div className="flex flex-col items-center">
+            <p className="logo-text ml-28 md:ml-0">Omnimart</p>
           </div>
 
           {/* Search component */}
@@ -54,7 +54,7 @@ function Navbar() {
           </div>
 
           {/* Hamburger icon for mobile */}
-          <div className="absolute right-0 md:hidden flex items-center">
+          <div className="absolute left-0 md:hidden flex items-center">
             <FaBars size={24} onClick={handleSidebarToggle} />
           </div>
 
@@ -102,7 +102,7 @@ function Navbar() {
       </nav>
 
       {/* Bottom navigation with categories */}
-      <ul className="w-full flex justify-center items-center gap-14 bg-teal-700 text-white text-md">
+      <ul className="hidden lg:flex w-full flex justify-center items-center gap-14 bg-teal-700 text-white text-md">
         {categories.map((category) => (
           <li
             key={category.id}
@@ -154,11 +154,11 @@ function Navbar() {
           </Link>
 
           {categories.map((category) => (
-            <div key={category.id} className="relative py-2 hover:bg-slate-500 w-full rounded-md px-4">
-              <button onClick={() => setHoveredCategory(category.id)}>
+            <div key={category.id} className="relative py-2 hover:bg-rose-500 hover-text-white w-full rounded-md px-4">
+              <button onClick={() => {navigate(`/category/${category.id}`), setSidebarOpen(false)}}>
                 {category.name}
               </button>
-              {hoveredCategory === category.id && (
+              {/* {hoveredCategory === category.id && (
                 <ul className="bg-white mt-4 border border-gray-200 rounded-lg shadow-lg text-teal-500">
                   {category.subcategories.map((subCategory) => (
                     <li key={subCategory.id}>
@@ -171,7 +171,7 @@ function Navbar() {
                     </li>
                   ))}
                 </ul>
-              )}
+              )} */}
             </div>
           ))}
 
@@ -189,7 +189,7 @@ function Navbar() {
               <LuLayoutDashboard
                 className="mx-4 inline p-1.5 bg-rose-400 rounded-full cursor-pointer"
                 size={32}
-                onClick={() => navigate("/businessCard")}
+                onClick={() => {navigate("/businessCard"), setSidebarOpen(false)}}
               />
             ) : null
           ) : null}

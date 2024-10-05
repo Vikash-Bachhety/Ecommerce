@@ -1,14 +1,12 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { IoIosHeartEmpty, IoIosHeart } from "react-icons/io";
-import { FaArrowRight } from "react-icons/fa";
 import { useSelector } from "react-redux";
 import useUserData from "./useUserData.js";
 import useAddToCart from "./useAddtoCart.js";
 import useAddFav from "./useAddFav.js";
 import useFetchCart from "./useFetchCart.js";
-import { useNavigate } from "react-router-dom";
 
 const TopDeals = () => {
   const [deals, setDeals] = useState([]);
@@ -27,7 +25,6 @@ const TopDeals = () => {
         const response = await axios.get(
           `https://omnimart.up.railway.app/api/products/topdeals`
         );
-        console.log(response.data)
         setLoading(false);
         const allProducts = response.data.flatMap((item) => item.products);
         const productsWithDiscount = allProducts.map((product) => {
@@ -63,24 +60,24 @@ const TopDeals = () => {
   };
 
   return (
-    <div className="bg-yellow-100 min-h-auto pb-6 m-2">
-      <div className="mx-auto">
-        <h2 className="text-2xl font-bold p-2 mb-2">
+    <div className="bg-yellow-100 min-h-auto pb-6 px-4 sm:mt-0 sm:px-6 lg:px-2">
+      <div className="mx-auto max-w-7xl">
+        <h2 className="text-2xl font-bold p-2 mb-6 text-center sm:text-3xl lg:text-4xl">
           Top Deals
         </h2>
-        <div className="flex flex-wrap gap-5 justify-center">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {deals.map((deal) => (
             <div
               key={deal._id}
-              className="bg-white min-w-40 w-72 h-72 p-4 flex-wrap rounded-sm shadow-md flex-col min-w-md flex"
+              className="bg-white w-full p-4 rounded-md shadow-md flex flex-col"
             >
               <img
                 src={deal.imageUrl}
-                onClick={() => { handleProductClick(deal._id); }}
+                onClick={() => handleProductClick(deal._id)}
                 alt={deal.productName}
-                className="h-40 w-full mb-2 object-contain rounded-lg"
+                className="h-40 w-full mb-4 object-contain rounded-lg cursor-pointer"
               />
-              <div className="flex items-center justify-between">
+              <div className="flex items-center justify-between mb-2">
                 <h3 className="text-sm font-semibold text-slate-800">
                   {deal.productName.split(" ").slice(0, 2).join(" ")}
                 </h3>
@@ -98,11 +95,11 @@ const TopDeals = () => {
                   />
                 )}
               </div>
-              <div className="w-full flex flex-col sm:flex-row mt-1 justify-between items-start sm:items-center">
-                <span className="text-md font-semibold mb-2 sm:mb-0">
+              <div className="flex justify-between items-center mb-4">
+                <span className="text-md font-semibold">
                   ₹{deal.offerPrice.toFixed(2)}
                 </span>
-                <span className="text-sm text-slate-700 line-through mb-2 sm:mb-0">
+                <span className="text-sm text-slate-700 line-through">
                   M.R.P ₹{deal.actualPrice.toFixed(2)}
                 </span>
                 <span className="text-sm text-red-500 bg-rose-500 text-white px-2 rounded-sm font-semibold">
@@ -111,19 +108,15 @@ const TopDeals = () => {
               </div>
               {cart.includes(deal._id) ? (
                 <button
-                  onClick={() => {
-                    handleAddToCart(deal);
-                  }}
-                  className="bg-orange-600 w-32 px-2 text-white text-sm py-1 rounded-lg mx-auto mt-2"
+                  onClick={() => handleAddToCart(deal)}
+                  className="bg-orange-600 w-full px-2 text-white text-sm py-1 rounded-lg"
                 >
                   Remove from cart
                 </button>
               ) : (
                 <button
-                  onClick={() => {
-                    handleAddToCart(deal);
-                  }}
-                  className="bg-primary w-24 px-2 text-white text-sm py-1 rounded-lg mx-auto mt-2"
+                  onClick={() => handleAddToCart(deal)}
+                  className="bg-primary w-full px-2 text-white text-sm py-1 rounded-lg"
                 >
                   Add to Cart
                 </button>

@@ -10,11 +10,11 @@ import favorite from '../assets/favorite.png';
 const MyProducts = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const token = localStorage.getItem("token");
   const { isLoggedIn } = useSelector((state) => state.auth);
   const navigate = useNavigate();
-  const { favorites, setFavorites, userId } = useUserData();
-  const [id, setId] = useState(null);
+  const { favorites, userId } = useUserData();
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -26,80 +26,76 @@ const MyProducts = () => {
           `https://omnimart.up.railway.app/api/auth/${userId}/myfavorites`
         );
         setProducts(response.data);
-        console.log(response.data);
         setLoading(false);
       } catch (error) {
-        if (error.response && error.response.status === 404) {
-          setProducts([]);
-          console.log(error.response.data.message);
+        if (error.response) {
+          setError(error.response.data.message || 'Failed to fetch products');
+        } else {
+          setError('Network error');
         }
-        console.error("Error fetching user products:", error);
         setLoading(false);
       }
     };
     fetchProducts();
-  }, [favorites, setFavorites, userId, id]);
+  }, [isLoggedIn, token, userId]);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <div className="flex justify-center items-center h-screen"><div>Loading...</div></div>;
   }
 
   const handleRemoveFav = async (id) => {
     try {
-      const response = await axios.delete(
+      await axios.delete(
         `https://omnimart.up.railway.app/api/auth/removeFromFav/${userId}/${id}`
       );
-      setId(id);
-      console.log(response.data);
+      // Update the products state
+      setProducts(products.filter(product => product._id !== id));
     } catch (error) {
       console.error("Error removing favorite:", error);
     }
   };
 
   return (
-    <div className="w-full min-h-screen mx-auto p-4">
+    <div className="w-full bg-blue-200 min-h-screen mx-auto p-4">
+      {error && <div className="text-red-500">{error}</div>}
 
       {products && products.length > 0 ? (
         <div className="w-full flex flex-col items-center justify-center">
-          <h2 className="text-3xl mt-6 font-bold text-teal-500 mb-8">
-            My Favorites
-          </h2>
-        <div className="flex-wrap flex gap-8 items-center justify-center p-8">
-
-          {products.map((product) => (
-            <div
-              key={product._id}
-              className="bg-white min-w-sm w-96 h-auto p-3 flex-wrap rounded-lg shadow-md flex-col min-w-md flex"
-            >
-              <img
-                src={product.imageUrl}
-                alt={product.productName}
-                className="h-48 w-full object-contain mb-4 rounded-lg"
-              />
-              <h3 className="text-xl font-semibold text-primary mb-2">
-                {product.productName}
-              </h3>
-              <p className="text-gray-700 mb-2">
-                <b>Price</b>: ₹{product.actualPrice}
-              </p>
-              <p className="text-gray-700 mb-2">
-                <b>Offer Price</b>: ₹{product.offerPrice}
-              </p>
-              <p className="text-gray-600 mb-4">
-                <b>Description</b>: {product.description}
-              </p>
-              {favorites.includes(product._id) && (
-                <IoIosHeart
-                  size={32}
-                  className="text-rose-500 cursor-pointer"
-                  onClick={() => handleRemoveFav(product._id)}
+          <h2 className="text-3xl mt-6 font-bold mb-8">My Favorites</h2>
+          <div className="flex-wrap flex gap-8 items-center justify-center sm:p-8 w-full">
+            {products.map((product) => (
+              <div
+                key={product._id}
+                className="bg-white min-w-sm w-96 h-auto p-3 flex-wrap rounded-lg shadow-md flex-col min-w-md flex"
+              >
+                <img
+                  src={product.imageUrl}
+                  alt={product.productName}
+                  className="h-48 w-full object-contain mb-4 rounded-lg"
                 />
-              )}
-            </div>
-          ))}
+                <h3 className="text-xl font-semibold text-primary mb-2">
+                  {product.productName}
+                </h3>
+                <p className="text-gray-700 mb-2">
+                  <b>Price</b>: ₹{product.actualPrice}
+                </p>
+                <p className="text-gray-700 mb-2">
+                  <b>Offer Price</b>: ₹{product.offerPrice}
+                </p>
+                <p className="text-gray-600 line-clamp-5 mb-4">
+                  <b>Description</b>: {product.description}
+                </p>
+                {favorites.includes(product._id) && (
+                  <IoIosHeart
+                    size={32}
+                    className="text-rose-500 cursor-pointer"
+                    onClick={() => handleRemoveFav(product._id)}
+                  />
+                )}
+              </div>
+            ))}
+          </div>
         </div>
-        </div>
-
       ) : (
         <div className='h-screen flex flex-col justify-center items-center'>
           <img className="w-20" src={favorite} alt="empty-cart" />

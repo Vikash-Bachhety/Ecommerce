@@ -43,7 +43,7 @@ const Footer = () => {
           <div className="flex items-center gap-4">
             <SlSocialFacebook />
             <Link
-              to="https://facebook.com"
+              to="https://www.facebook.com/vbachhety"
               target="_blank"
               rel="noopener noreferrer"
               className="text-white text-md hover:text-highlight transition"
@@ -52,7 +52,7 @@ const Footer = () => {
             </Link>
             <SlSocialInstagram />
             <Link
-              to="https://instagram.com"
+              to="https://www.instagram.com/vbachhety/"
               target="_blank"
               rel="noopener noreferrer"
               className="text-white text-md hover:text-highlight transition"
@@ -61,7 +61,7 @@ const Footer = () => {
             </Link>
             <SlSocialGoogle />
             <Link
-              to="https://google.co.in"
+              to="https://bachhety@gmail.com"
               target="_blank"
               rel="noopener noreferrer"
               className="text-white text-md hover:text-highlight transition"

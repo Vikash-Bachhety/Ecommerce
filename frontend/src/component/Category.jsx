@@ -3,16 +3,16 @@ import { categories } from "./category.js";
 
 const Category = () => {
   return (
-    <div className="bg-teal-100 min-h-screen pb-6 mx-2">
-      <div className="mx-auto">
-      <h2 className="text-2xl font-bold p-2 mb-2">
-      Categories
+    <div className="bg-teal-100 min-h-screen pb-6">
+      <div className="max-w-7xl mx-auto">
+        <h2 className="text-2xl font-bold p-2 mb-4 text-center sm:text-3xl md:text-4xl lg:text-5xl">
+          Categories
         </h2>
-        <div className="flex flex-wrap justify-center gap-4 w-full">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {categories.map((category) => (
             <div
               key={category.id}
-              className="bg-white min-w-40 w-60 h-92 p-4 flex-wrap rounded-sm shadow-md flex flex-col min-w-md flex"
+              className="bg-white p-4 rounded-md shadow-md flex flex-col mx-4"
             >
               <img
                 src={category.image}
@@ -27,7 +27,7 @@ const Category = () => {
               </p>
               <Link
                 to={`/category/${category.id}`}
-                className="bg-primary mx-auto text-white py-1 px-2 rounded-lg hover:bg-highlight transition"
+                className="bg-primary text-white py-1 px-4 rounded-lg hover:bg-highlight transition mx-auto text-center"
               >
                 Explore
               </Link>
