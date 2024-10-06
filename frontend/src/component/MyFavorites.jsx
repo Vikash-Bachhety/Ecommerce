@@ -57,8 +57,6 @@ const MyProducts = () => {
 
   return (
     <div className="w-full bg-blue-200 min-h-screen mx-auto p-4">
-      {error && <div className="text-red-500">{error}</div>}
-
       {products && products.length > 0 ? (
         <div className="w-full flex flex-col items-center justify-center">
           <h2 className="text-3xl mt-6 font-bold mb-8">My Favorites</h2>

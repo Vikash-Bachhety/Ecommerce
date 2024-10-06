@@ -22,7 +22,7 @@ function Cart() {
     try {
       const response = await axios.delete(`https://omnimart.up.railway.app/api/auth/removeFromCart/${userId}/${id}`);
       console.log("Item removed:", response.data);
-
+      dispatch(setCart(response.data));
       if (response.data.length === 0) {
         dispatch(setCart([]));
       }
