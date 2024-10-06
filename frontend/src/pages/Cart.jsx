@@ -93,7 +93,7 @@ function Cart() {
           </div>
         </div>
       ) : (
-        <div className='h-screen flex flex-col justify-center items-center'>
+        <div className='h-screen sm:h-[80vh] flex flex-col justify-center items-center'>
           <img className='w-24' src={empty} alt="empty-cart" />
           <p className='text-lg font-semibold text-gray-700 mt-4'>Your cart is empty.</p>
         </div>

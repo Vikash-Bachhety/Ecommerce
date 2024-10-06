@@ -55,6 +55,10 @@ const MyProducts = () => {
     }
   };
 
+  const handleProductClick = (id)=> {
+    navigate(`/product/${id}`)
+  }
+
   return (
     <div className="w-full bg-blue-200 min-h-screen mx-auto p-4">
       {products && products.length > 0 ? (
@@ -69,6 +73,7 @@ const MyProducts = () => {
                 <img
                   src={product.imageUrl}
                   alt={product.productName}
+                  onClick={()=>{handleProductClick(product._id)}}
                   className="h-48 w-full object-contain mb-4 rounded-lg"
                 />
                 <h3 className="text-xl font-semibold text-primary mb-2">
@@ -95,7 +100,7 @@ const MyProducts = () => {
           </div>
         </div>
       ) : (
-        <div className='h-screen flex flex-col justify-center items-center'>
+        <div className='h-screen sm:h-[80vh] flex flex-col justify-center items-center'>
           <img className="w-20" src={favorite} alt="empty-cart" />
           <p className="text-lg font-semibold text-gray-700 mt-4">
             No favorite product available.
