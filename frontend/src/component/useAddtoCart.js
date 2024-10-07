@@ -1,8 +1,8 @@
 import axios from "axios";
-import { toast } from "react-toastify"; // Ensure you have this library installed
-import { useNavigate } from "react-router-dom"; // Adjust based on your routing
-import { useDispatch, useSelector } from "react-redux"; // Adjust if you're using Redux
-import { addToCart, removeFromCart } from "./cartSlice.js"; // Ensure removeFromCart is imported
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { addToCart, removeFromCart } from "./cartSlice.js";
 
 function useAddToCart(cart, setCart, userId) {
   const dispatch = useDispatch();
@@ -21,8 +21,8 @@ function useAddToCart(cart, setCart, userId) {
 
     // Check if the product is already in the cart
     const updatedCarts = cart.includes(product._id)
-      ? cart.filter((id) => id !== product._id) // Remove from cart
-      : [...cart, product._id]; // Add new item to cart
+      ? cart.filter((id) => id !== product._id)
+      : [...cart, product._id];
 
     // Update local state
     setCart(updatedCarts); 

@@ -46,7 +46,7 @@ const ProductDetails = () => {
           <img
             src={product.imageUrl}
             alt={product.productName}
-            className="h-96 w-96 object-cover mb-4 rounded-lg"
+            className="h-96 w-96 object-contain mb-4 rounded-lg"
           />
           <div className="flex flex-col">
             <h1 className="text-4xl font-bold text-primary mb-4">

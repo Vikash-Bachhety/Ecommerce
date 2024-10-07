@@ -24,6 +24,20 @@ function Navbar() {
     dispatch(setAuthFromToken());
   }, [dispatch]);
 
+  useEffect(() => {
+    // Add/remove 'overflow-hidden' class to body when sidebar is open/closed
+    if (sidebarOpen) {
+      document.body.classList.add("overflow-hidden");
+    } else {
+      document.body.classList.remove("overflow-hidden");
+    }
+
+    // Cleanup function to ensure no side effects if the component is unmounted
+    return () => {
+      document.body.classList.remove("overflow-hidden");
+    };
+  }, [sidebarOpen]);
+
   const handleLogout = () => {
     dispatch(logout());
     toast.success("Logout successful");
@@ -132,49 +146,29 @@ function Navbar() {
 
       {/* Sidebar for mobile view */}
       <div
-        className={`z-20 md:hidden fixed top-0 left-0 min-w-3/4 h-full bg-teal-500 text-white transition-transform transform ${
-          sidebarOpen ? "translate-x-0" : "-translate-x-full"
-        }`}
+        className={`z-20 md:hidden fixed top-0 left-0 min-w-3/4 w-2/3 h-full bg-teal-500 text-white transition-transform transform ${sidebarOpen ? "translate-x-0" : "-translate-x-full"
+          }`}
       >
         <div className="flex justify-between items-center p-4">
-          <p className="font-extrabold text-xl">Omnimart</p>
-          <FaTimes
-            size={24}
-            className="hover:text-rose-400 cursor-pointer"
-            onClick={handleSidebarToggle}
-          />
-        </div>
-        <div className="flex flex-col p-4 gap-5">
-          <Link
-            to="/"
-            className="py-2 hover:bg-slate-500 w-full rounded-md px-4"
-            onClick={() => setSidebarOpen(false)}
-          >
-            Home
-          </Link>
-
-          {categories.map((category) => (
-            <div key={category.id} className="relative py-2 hover:bg-rose-500 hover-text-white w-full rounded-md px-4">
-              <button onClick={() => {navigate(`/category/${category.id}`), setSidebarOpen(false)}}>
-                {category.name}
-              </button>
-              {/* {hoveredCategory === category.id && (
-                <ul className="bg-white mt-4 border border-gray-200 rounded-lg shadow-lg text-teal-500">
-                  {category.subcategories.map((subCategory) => (
-                    <li key={subCategory.id}>
-                      <button
-                        onClick={() => handleSubCategoryClick(category.id, subCategory.id)}
-                        className="block px-4 py-2 hover:bg-rose-400 rounded-lg hover:text-white w-full text-left"
-                      >
-                        {subCategory.name}
-                      </button>
-                    </li>
-                  ))}
-                </ul>
-              )} */}
-            </div>
-          ))}
-
+          {isLoggedIn ? (
+            <button
+              onClick={() => {
+                handleLogout();
+                setSidebarOpen(false);
+              }}
+              className="py-2 px-4 font-semibold rounded-md bg-rose-600 hover:bg-rose-500"
+            >
+              Logout
+            </button>
+          ) : (
+            <Link
+              to="/signin"
+              className="py-2 mx-auto px-4 font-semibold rounded-md bg-rose-500 hover:bg-highlight"
+              onClick={() => setSidebarOpen(false)}
+            >
+              Sign In
+            </Link>
+          )}
           {accountType ? (
             accountType === "user" ? (
               <Link to="/Cart" className="relative w-full">
@@ -189,30 +183,32 @@ function Navbar() {
               <LuLayoutDashboard
                 className="mx-4 inline p-1.5 bg-rose-400 rounded-full cursor-pointer"
                 size={32}
-                onClick={() => {navigate("/businessCard"), setSidebarOpen(false)}}
+                onClick={() => { navigate("/businessCard"), setSidebarOpen(false) }}
               />
             ) : null
           ) : null}
+          <FaTimes
+            size={24}
+            className="hover:text-rose-400 cursor-pointer"
+            onClick={handleSidebarToggle}
+          />
+        </div>
+        <div className="flex flex-col p-4 gap-2 overflow-hidden">
+          <Link
+            to="/"
+            className="py-2 hover:bg-rose-500 w-full rounded-md px-4"
+            onClick={() => setSidebarOpen(false)}
+          >
+            Home
+          </Link>
 
-          {isLoggedIn ? (
-            <button
-              onClick={() => {
-                handleLogout();
-                setSidebarOpen(false);
-              }}
-              className="py-2 px-20 font-semibold rounded-md bg-rose-600 hover:bg-rose-500"
-            >
-              Logout
-            </button>
-          ) : (
-            <Link
-              to="/signin"
-              className="py-2 mx-auto px-20 font-semibold rounded-md bg-rose-400 hover:bg-highlight"
-              onClick={() => setSidebarOpen(false)}
-            >
-              Sign In
-            </Link>
-          )}
+          {categories.map((category) => (
+            <div key={category.id} className="relative py-2 hover:bg-rose-500 hover-text-white w-full rounded-md px-4">
+              <button onClick={() => { navigate(`/category/${category.id}`), setSidebarOpen(false) }}>
+                {category.name}
+              </button>
+            </div>
+          ))}
         </div>
       </div>
 
