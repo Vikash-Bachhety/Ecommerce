@@ -13,7 +13,6 @@ const Footer = () => {
       <div className="container mx-auto flex flex-col flex-wrap text-white justify-between">
         {/* Categories Section */}
         <div className="w-full flex flex-col items-center mb-8">
-          <h3 className="text-xl font-bold mb-4">Categories</h3>
           <div className="flex flex-wrap gap-12 justify-around items-start mt-5">
             {categories.map((category) => (
               <div key={category.id} className="mb-4">

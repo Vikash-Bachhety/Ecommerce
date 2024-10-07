@@ -4,15 +4,15 @@ import { categories } from "./category.js";
 const Category = () => {
   return (
     <div className="bg-teal-100 min-h-screen pb-6">
-      <div className="max-w-7xl">
+      <div className="max-w-7xl mx-auto">
         <h2 className="text-2xl font-bold p-2 mb-4 text-center sm:text-3xl md:text-4xl">
           Categories
         </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        <div className="flex flex-wrap justify-center gap-4">
           {categories.map((category) => (
             <div
               key={category.id}
-              className="bg-white p-4 rounded-md shadow-md flex flex-col mx-4"
+              className="bg-white p-4 rounded-md shadow-md flex flex-col w-80 sm:w-1/2 md:w-1/3 lg:w-72"
             >
               <img
                 src={category.image}

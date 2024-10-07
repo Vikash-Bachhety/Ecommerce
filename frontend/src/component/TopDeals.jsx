@@ -65,11 +65,11 @@ const TopDeals = () => {
         <h2 className="text-2xl font-bold p-2 mb-6 text-center sm:text-3xl lg:text-4xl">
           Top Deals
         </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        <div className="flex flex-wrap justify-center gap-6">
           {deals.map((deal) => (
             <div
               key={deal._id}
-              className="bg-white w-full p-4 rounded-md shadow-md flex flex-col"
+              className="bg-white w-80 p-4 rounded-md shadow-md flex flex-col sm:w-1/2 md:w-1/3 lg:w-72"
             >
               <img
                 src={deal.imageUrl}
