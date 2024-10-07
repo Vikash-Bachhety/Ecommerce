@@ -172,7 +172,8 @@ function Navbar() {
           {accountType ? (
             accountType === "user" ? (
               <Link to="/Cart" className="relative w-full">
-                <FaCartPlus size={28} className="inline mx-4" />
+                <FaCartPlus size={28} className="inline mx-auto w-full" 
+                onClick={()=>{setSidebarOpen(false)}}/>
                 {cart.length > 0 && (
                   <span className="absolute -top-4 left-9 py-1 px-2 text-xs font-bold bg-rose-600 rounded-full">
                     {cart.length}
@@ -181,7 +182,7 @@ function Navbar() {
               </Link>
             ) : accountType === "business" ? (
               <LuLayoutDashboard
-                className="mx-4 inline p-1.5 bg-rose-400 rounded-full cursor-pointer"
+                className="mx-auto inline p-1.5 bg-rose-400 rounded-full cursor-pointer"
                 size={32}
                 onClick={() => { navigate("/businessCard"), setSidebarOpen(false) }}
               />
@@ -193,7 +194,7 @@ function Navbar() {
             onClick={handleSidebarToggle}
           />
         </div>
-        <div className="flex flex-col p-4 gap-2 overflow-hidden">
+        <div className="flex flex-col p-4 gap-4 overflow-hidden">
           <Link
             to="/"
             className="py-2 hover:bg-rose-500 w-full rounded-md px-4"
