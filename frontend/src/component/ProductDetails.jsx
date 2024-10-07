@@ -40,16 +40,16 @@ const ProductDetails = () => {
   }
 
   return (
-    <div className="bg-slate-200 min-h-auto py-4">
-      <div className="container mx-auto px-4">
-        <div className="flex flex-col items-center sm:flex-row gap-8">
+    <div className="bg-white min-h-auto py-4">
+      <div className="flex justify-center px-4">
+        <div className="w-full flex flex-col items-center sm:flex-row lg:w-4/5 lg:text-justify gap-8">
           <img
             src={product.imageUrl}
             alt={product.productName}
-            className="h-96 w-96 object-contain mb-4 rounded-lg"
+            className="h-60 w-60 sm:h-1/2 sm:w-1/2 object-contain mb-4"
           />
           <div className="flex flex-col">
-            <h1 className="text-4xl font-bold text-primary mb-4">
+            <h1 className="text-xl sm:text-4xl font-bold text-primary mb-4">
               {product.productName}
             </h1>
 
@@ -59,13 +59,13 @@ const ProductDetails = () => {
             {cart.includes(product._id) ? (
                 <button
                   onClick={() => { handleAddToCart(product) }}
-                  className="bg-orange-600 w-32 px-2 text-white text-sm py-1 rounded-lg mx-auto mt-4">
+                  className="bg-orange-600 hover:bg-primary w-32 px-2 text-white text-sm py-2 rounded-lg mx-auto mt-4">
                   Remove from cart
                 </button>
               ) : (
                 <button
                   onClick={() => { handleAddToCart(product) }}
-                  className="bg-primary w-24 px-2 text-white text-sm py-1 rounded-lg mx-auto mt-4">
+                  className="bg-primary w-24 px-2 text-white text-sm py-2 hover:bg-orange-600 rounded-lg mx-auto mt-4">
                   Add to Cart
                 </button>
               )}

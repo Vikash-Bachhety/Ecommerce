@@ -22,15 +22,17 @@ function Cart() {
     try {
       const response = await axios.delete(`https://omnimart.up.railway.app/api/auth/removeFromCart/${userId}/${id}`);
       console.log("Item removed:", response.data);
-
-      if (response.data.length === 0) {
-        dispatch(setCart([]));
+      
+      // If the removed item makes the cart empty, dispatch an empty cart update
+      if (response.data.length === 0 || cart.length === 1) {
+        dispatch(setCart([])); // Empty the cart
+      } else {
+        setReload(prev => !prev); // Else reload the cart state
       }
-      setReload(prev => !prev);
     } catch (error) {
       console.error("Error removing from cart:", error.response?.data || error.message);
     }
-  };
+  };  
 
   const handleIncreaseQuantity = (id) => {
     dispatch(increaseQuantity({ id }));
@@ -91,7 +93,7 @@ function Cart() {
           </div>
         </div>
       ) : (
-        <div className='h-screen flex flex-col justify-center items-center'>
+        <div className='h-screen sm:h-[80vh] flex flex-col justify-center items-center'>
           <img className='w-24' src={empty} alt="empty-cart" />
           <p className='text-lg font-semibold text-gray-700 mt-4'>Your cart is empty.</p>
         </div>

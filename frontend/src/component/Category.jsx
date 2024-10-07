@@ -4,7 +4,7 @@ import { categories } from "./category.js";
 const Category = () => {
   return (
     <div className="bg-teal-100 min-h-screen pb-6">
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-7xl">
         <h2 className="text-2xl font-bold p-2 mb-4 text-center sm:text-3xl md:text-4xl">
           Categories
         </h2>
